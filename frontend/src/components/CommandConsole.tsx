@@ -65,7 +65,7 @@ function formatTime(): string {
   return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 }
 
-export default function CommandConsole() {
+export default function CommandConsole({ initialCommand = '' }: { initialCommand?: string }) {
   const [entries, setEntries] = useState<CommandEntry[]>([
     {
       id: 'welcome',
@@ -87,6 +87,9 @@ export default function CommandConsole() {
 
   useEffect(() => {
     inputRef.current?.focus();
+    if (initialCommand) {
+      processCommand(initialCommand);
+    }
   }, []);
 
   const processCommand = async (command: string) => {
