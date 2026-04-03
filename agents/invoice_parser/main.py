@@ -83,9 +83,15 @@ class InvoiceParserAgent(BaseFinanceAgent):
         vendor_match = None
         if vendor_name:
             try:
+                # Escape special characters for SQL LIKE/ILIKE to prevent injection
+                safe_vendor_name = (
+                    vendor_name.replace("\\", "\\\\")
+                    .replace("%", "\\%")
+                    .replace("_", "\\_")
+                )
                 resp = self.supabase.table("vendors").select("*").eq(
                     "company_id", task.company_id
-                ).ilike("name", f"%{vendor_name}%").execute()
+                ).ilike("name", f"%{safe_vendor_name}%").execute()
                 if resp.data:
                     vendor_match = resp.data[0]
                     parsed_data["vendor_id"] = vendor_match["id"]
