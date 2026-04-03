@@ -38,7 +38,7 @@ export default function InvoiceTable() {
             : inv.date || '-',
           displayDue: inv.due_date
             ? new Date(inv.due_date).toLocaleDateString('en-GB')
-            : inv.due || '-',
+            : '-',
         }));
 
         setInvoices(formattedInvoices);
