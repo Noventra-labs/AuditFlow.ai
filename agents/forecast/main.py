@@ -1,6 +1,5 @@
 # agents/forecast/main.py — Forecast Agent
 import os
-import json
 from uuid import uuid4
 from datetime import datetime, timedelta
 
