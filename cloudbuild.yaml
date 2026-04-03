@@ -1,0 +1,162 @@
+# ============================================================
+# FinancePilot - Cloud Build CI/CD Pipeline
+# Builds & deploys all 7 services to Cloud Run
+# ============================================================
+
+substitutions:
+  _REGION: asia-southeast1
+  _REPO: financepilot
+
+steps:
+  # ── Build all container images in parallel ──
+  - id: build-orchestrator
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/orchestrator:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/orchestrator:latest
+      - -f
+      - backend/orchestrator/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  - id: build-invoice-parser
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/invoice-parser:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/invoice-parser:latest
+      - -f
+      - backend/agents/invoice_parser/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  - id: build-reconciliation
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/reconciliation:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/reconciliation:latest
+      - -f
+      - backend/agents/reconciliation/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  - id: build-tax-compliance
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/tax-compliance:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/tax-compliance:latest
+      - -f
+      - backend/agents/tax_compliance/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  - id: build-forecast
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/forecast:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/forecast:latest
+      - -f
+      - backend/agents/forecast/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  - id: build-report
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/report:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/report:latest
+      - -f
+      - backend/agents/report/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  - id: build-alert
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/alert:${BUILD_ID}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/alert:latest
+      - -f
+      - backend/agents/alert/Dockerfile
+      - backend
+    waitFor: ["-"]
+
+  # ── Push all images ──
+  - id: push-images
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        for svc in orchestrator invoice-parser reconciliation tax-compliance forecast report alert; do
+          docker push ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/$${svc}:${BUILD_ID}
+          docker push ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/$${svc}:latest
+        done
+    waitFor:
+      - build-orchestrator
+      - build-invoice-parser
+      - build-reconciliation
+      - build-tax-compliance
+      - build-forecast
+      - build-report
+      - build-alert
+
+  # ── Deploy to Cloud Run ──
+  - id: deploy-all
+    name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        for svc in orchestrator invoice-parser reconciliation tax-compliance forecast report alert; do
+          gcloud run deploy financepilot-$${svc} \
+            --image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/$${svc}:${BUILD_ID} \
+            --region=${_REGION} \
+            --platform=managed \
+            --allow-unauthenticated \
+            --min-instances=1 \
+            --max-instances=10 \
+            --memory=512Mi \
+            --cpu=1 \
+            --no-cpu-throttling \
+            --timeout=300 \
+            --set-env-vars="GCP_PROJECT_ID=${PROJECT_ID},REDIS_HOST=10.8.0.3" \
+            --set-secrets="SUPABASE_URL=supabase-url:latest,SUPABASE_SERVICE_KEY=supabase-service-key:latest,GEMINI_API_KEY=gemini-api-key:latest" \
+            --vpc-connector=financepilot-vpc \
+            --quiet
+        done
+    waitFor: [push-images]
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: E2_HIGHCPU_8
+
+timeout: 1800s
+
+images:
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/orchestrator:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/invoice-parser:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/reconciliation:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/tax-compliance:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/forecast:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/report:${BUILD_ID}
+  - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/alert:${BUILD_ID}

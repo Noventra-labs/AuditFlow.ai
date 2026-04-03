@@ -1,0 +1,6 @@
+# Copy to variables.tfvars and fill in your secret values
+project_id           = "auditflow-492115"
+region               = "asia-southeast1"
+supabase_url         = "https://your-project.supabase.co"
+supabase_service_key = "eyJ..."
+gemini_api_key    = "AIza..."

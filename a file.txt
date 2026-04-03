@@ -1,0 +1,161 @@
+FinancePilot Full Project Code Review
+Date: 2026-04-02
+
+Findings (ordered by severity)
+
+1) CRITICAL - API authentication and authorization effectively bypassed
+Files:
+- orchestrator/main.py (multiple endpoints use optional auth)
+- shared/auth.py
+- shared/supabase_client.py
+Evidence:
+- verify_token_optional allows missing token and returns None.
+- Endpoints accept caller-provided company_id and do not enforce company_id from auth claims.
+- Supabase client uses service role key, so bypassing app-layer checks exposes all tenant data.
+Risk:
+- Unauthenticated and cross-company data access.
+Suggested fix:
+- Require verify_firebase_token on protected endpoints and enforce company_id from token claims.
+
+2) CRITICAL - Pub/Sub names in runtime code mismatch Terraform resource names
+Files:
+- orchestrator/router.py
+- agents/base_agent.py
+- infra/main.tf
+Evidence:
+- Runtime uses names like finance.invoice and subscriptions like finance.invoice-sub.
+- Terraform creates names with dots replaced by hyphens (finance-invoice, finance-invoice-sub).
+Risk:
+- Producers/consumers target different topics/subscriptions; tasks may not be delivered.
+Suggested fix:
+- Centralize topic naming and align Terraform + runtime.
+
+3) CRITICAL - Invoice parser writes schema-incompatible fields and can still report success
+Files:
+- agents/invoice_parser/main.py
+- supabase/migrations/001_core_schema.sql
+Evidence:
+- Inserts/upserts invoice fields issue_date, pdf_url, raw_json, parsed_by_agent.
+- invoices schema defines invoice_date, raw_text, line_items, metadata and lacks those runtime fields.
+- Save failures are logged but task still returns success.
+Risk:
+- Parsing appears successful while persistence fails or writes incorrect shape.
+Suggested fix:
+- Align invoice write payload to schema and return error status on persistence failure.
+
+4) CRITICAL - Parser failure payloads can be stored as parsed invoices
+Files:
+- agents/invoice_parser/parser.py
+- agents/invoice_parser/main.py
+Evidence:
+- Parser returns {'error': ... , 'raw': ...} on JSON parse failure.
+- Main flow does not gate on this and still sets status='parsed'.
+Risk:
+- Corrupt invoice data enters downstream reconciliation/tax/report flows.
+Suggested fix:
+- Fail task when parsed_data contains error and avoid writing malformed records.
+
+5) CRITICAL - Reconciliation uses non-existent columns and invalid status assumptions
+Files:
+- agents/reconciliation/main.py
+- supabase/migrations/001_core_schema.sql
+Evidence:
+- Uses status 'pending' (not in invoice status check constraint).
+- Reads/writes bank_transactions.reconciled_invoice_id and confidence_score, while schema uses matched_invoice_id and has no confidence_score on bank_transactions.
+Risk:
+- Query/update failures and non-functional reconciliation pipeline.
+Suggested fix:
+- Update code to schema names and valid statuses.
+
+6) CRITICAL - Tax compliance flow has major schema drift
+Files:
+- agents/tax_compliance/main.py
+- supabase/migrations/001_core_schema.sql
+Evidence:
+- Expects companies.jurisdiction, vendors.gst_registered, tax_records.tax_amount/input_credit/gross_amount.
+- Schema has companies.country and tax_records.taxable_amount/output_tax/input_tax.
+Risk:
+- Tax calculations and writes fail or become inaccurate.
+Suggested fix:
+- Refactor tax agent field mapping to schema and add DB contract tests.
+
+7) HIGH - Audit logging payload mismatches schema and session_id format
+Files:
+- agents/base_agent.py
+- orchestrator/main.py
+- supabase/migrations/001_core_schema.sql
+Evidence:
+- Writes tool_calls_json and created_at, while table defines metadata and timestamp.
+- audit table expects session_id UUID; orchestrator creates session IDs like sess_<12 hex>.
+Risk:
+- Audit insert failures; reduced traceability/compliance evidence.
+Suggested fix:
+- Use proper UUID session IDs and align audit columns.
+
+8) HIGH - Pub/Sub messages acknowledged before processing
+Files:
+- agents/base_agent.py
+Evidence:
+- callback acks message before running handle_message.
+Risk:
+- If processing fails after ack, message is permanently lost.
+Suggested fix:
+- Ack only after successful processing and publish_result, use retry/nack on failure.
+
+9) HIGH - Worker-style agents deployed as Cloud Run services without HTTP handlers
+Files:
+- agents/*/main.py
+- agents/*/Dockerfile
+- infra/main.tf
+Evidence:
+- Agent entrypoints run start_subscriber (long-lived pull subscribers).
+- Infra deploys them as Cloud Run services expecting request-serving containers and declared container ports.
+Risk:
+- Runtime/deployment mismatch, unstable scaling behavior, potential failed health/startup expectations.
+Suggested fix:
+- Use Cloud Run Jobs/GKE workers for pull subscribers, or convert to HTTP push handlers.
+
+10) HIGH - Alerts endpoint filters on non-existent column
+Files:
+- orchestrator/main.py
+- supabase/migrations/001_core_schema.sql
+Evidence:
+- API filters alerts with resolved_at.
+- Schema uses acknowledged_at.
+Risk:
+- Failed alert queries and broken active-alert filtering.
+Suggested fix:
+- Use acknowledged_at consistently (or migrate schema + code together).
+
+11) MEDIUM - Frontend WebSocket contract mismatch
+Files:
+- frontend/src/components/AgentActivity.tsx
+- orchestrator/main.py
+- shared/models.py
+Evidence:
+- Frontend expects data.type == 'agent_event' and data.payload.
+- Backend emits WSEvent with keys event, data, timestamp.
+Risk:
+- Live activity feed does not update from real backend events.
+Suggested fix:
+- Standardize event envelope and update one side to match.
+
+12) LOW - TypeScript target deprecation in frontend
+Files:
+- frontend/tsconfig.json
+Evidence:
+- compilerOptions.target is es5 (deprecated for TS 7).
+Risk:
+- Future build/IDE failures with newer TypeScript.
+Suggested fix:
+- Use a modern target (es2017/esnext) aligned with Next.js.
+
+Additional observations
+- Python syntax compile check passed: python -m compileall agents orchestrator shared
+- Static frontend content appears demo-oriented (hardcoded counts/data), which may be intentional but should not be treated as live metrics in production UI.
+
+Recommended immediate priority
+1. Fix authz/authn enforcement and company scoping.
+2. Resolve all schema-contract mismatches (invoice, reconciliation, tax, audit, alerts).
+3. Fix Pub/Sub naming mismatch and message ack semantics.
+4. Align worker deployment model with runtime behavior.

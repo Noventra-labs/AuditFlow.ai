@@ -1,0 +1,2275 @@
+[
+  {
+    "insertId": "69cfbfa7000ae6a84203ab2d",
+    "labels": {
+      "container_name": "invoice-parser-1",
+      "instanceId": "008c15ff08d36c14a4043fd81716a1f6bb5d58ed5ecd571a5264e78846077bb43ca3f7f5c5f274e0f96f29c812a9827f5444b289335ade53d282caacc32faa02381d3e637c906583f62b7df4f6498eea26ba"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-04-03T13:24:55.719276305Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "textPayload": "Container called exit(1).",
+    "timestamp": "2026-04-03T13:24:55.714318829Z"
+  },
+  {
+    "errorGroups": [
+      {
+        "id": "CLzT58fe-aXXwgE"
+      }
+    ],
+    "insertId": "69cfbf09000a87d52be84023",
+    "labels": {
+      "instanceId": "008c15ff08d36c14a4043fd81716a1f6bb5d58ed5ecd571a5264e78846077bb43ca3f7f5c5f274e0f96f29c812a9827f5444b289335ade53d282caacc32faa02381d3e637c906583f62b7df4f6498eea26ba"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-04-03T13:22:17.695839968Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "textPayload": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/app/agents/invoice_parser/main.py\", line 140, in <module>\n    agent.start_subscriber()\n  File \"/app/agents/invoice_parser/../../agents/base_agent.py\", line 219, in start_subscriber\n    streaming_pull_future.result()\n  File \"/usr/local/lib/python3.12/concurrent/futures/_base.py\", line 456, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\ngoogle.api_core.exceptions.NotFound: 404 Resource not found (resource=finance.invoice-sub).",
+    "timestamp": "2026-04-03T13:22:17.690133Z"
+  },
+  {
+    "insertId": "-twz509dyylg",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/operation-id": "146c89d8-029f-4a89-990f-3b11f7ebff38",
+            "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\",\"https://financepilot-invoice-parser-y2yrqab67a-as.a.run.app\"]",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+          "generation": 4,
+          "labels": {
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true"
+          },
+          "name": "financepilot-invoice-parser",
+          "namespace": "210230935248",
+          "resourceVersion": "AAZOjjS+e1s",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+          "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "10",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "563.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true",
+                "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "fvydlpvmke",
+                "run.googleapis.com/startupProbeType": "Default"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "GCP_PROJECT_ID",
+                      "value": "auditflow-492115"
+                    },
+                    {
+                      "name": "REDIS_HOST",
+                      "value": "10.8.0.3"
+                    },
+                    {
+                      "name": "SUPABASE_URL",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-url"
+                        }
+                      }
+                    },
+                    {
+                      "name": "SUPABASE_SERVICE_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-service-key"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GEMINI_API_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "gemini-api-key"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:00c1df17-ff8b-4ec8-835c-80be9cb6b7b7",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 1,
+                    "periodSeconds": 240,
+                    "tcpSocket": {
+                      "port": 8080
+                    },
+                    "timeoutSeconds": 240
+                  }
+                }
+              ],
+              "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+              "timeoutSeconds": 300
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "address": {
+            "url": "https://financepilot-invoice-parser-y2yrqab67a-as.a.run.app"
+          },
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T13:22:17.485147Z",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:22:15.712120Z",
+              "status": "True",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:22:17.448886Z",
+              "status": "True",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "financepilot-invoice-parser-00004-vlm",
+          "latestReadyRevisionName": "financepilot-invoice-parser-00004-vlm",
+          "observedGeneration": 4,
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100,
+              "revisionName": "financepilot-invoice-parser-00004-vlm"
+            }
+          ],
+          "url": "https://financepilot-invoice-parser-y2yrqab67a-as.a.run.app"
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Service financepilot-invoice-parser."
+      }
+    },
+    "receiveTimestamp": "2026-04-03T13:22:18.388604787Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-04-03T13:22:17.496764Z"
+  },
+  {
+    "insertId": "-jnx33udm014",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/auditflow-492115/revisions/financepilot-invoice-parser-00004-vlm",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/operation-id": "146c89d8-029f-4a89-990f-3b11f7ebff38",
+            "run.googleapis.com/startup-cpu-boost": "true",
+            "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T13:21:46.166542Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "fvydlpvmke",
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Default",
+            "serving.knative.dev/configuration": "financepilot-invoice-parser",
+            "serving.knative.dev/configurationGeneration": "4",
+            "serving.knative.dev/route": "financepilot-invoice-parser",
+            "serving.knative.dev/service": "financepilot-invoice-parser",
+            "serving.knative.dev/serviceUid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "name": "financepilot-invoice-parser-00004-vlm",
+          "namespace": "210230935248",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "financepilot-invoice-parser",
+              "uid": "29f3cd43-dc66-4e7e-939b-c526eb902352"
+            }
+          ],
+          "resourceVersion": "AAZOjjSaXk0",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/revisions/financepilot-invoice-parser-00004-vlm",
+          "uid": "6b50f2b8-6f51-4699-8f79-52a9cb6f37f6"
+        },
+        "spec": {
+          "containerConcurrency": 80,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "GCP_PROJECT_ID",
+                  "value": "auditflow-492115"
+                },
+                {
+                  "name": "REDIS_HOST",
+                  "value": "10.8.0.3"
+                },
+                {
+                  "name": "SUPABASE_URL",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-url"
+                    }
+                  }
+                },
+                {
+                  "name": "SUPABASE_SERVICE_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-service-key"
+                    }
+                  }
+                },
+                {
+                  "name": "GEMINI_API_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "gemini-api-key"
+                    }
+                  }
+                }
+              ],
+              "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:78a1fae6599d05f68bb20802b674c1fd2a2cf6331039d9fd001d9a52472491f7",
+              "name": "invoice-parser-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+          "timeoutSeconds": 300
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T13:22:15.118413Z",
+              "message": "Deploying revision succeeded in 28.95s.",
+              "status": "True",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:22:15.067478Z",
+              "message": "Containers became healthy in 11.36s.",
+              "status": "True",
+              "type": "ContainerHealthy"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:21:58.746424Z",
+              "message": "Container image import completed in 11.82s.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:22:03.276715Z",
+              "message": "Provisioning imported containers completed in 4.53s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:78a1fae6599d05f68bb20802b674c1fd2a2cf6331039d9fd001d9a52472491f7",
+              "name": "invoice-parser-1"
+            }
+          ],
+          "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:78a1fae6599d05f68bb20802b674c1fd2a2cf6331039d9fd001d9a52472491f7",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00004-vlm&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00004-vlm%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "message": "Ready condition status changed to True for Revision financepilot-invoice-parser-00004-vlm with message: Deploying revision succeeded in 28.95s."
+      }
+    },
+    "receiveTimestamp": "2026-04-03T13:22:15.861083811Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "timestamp": "2026-04-03T13:22:15.132441Z"
+  },
+  {
+    "insertId": "69cfbf07000113c490f1797b",
+    "jsonPayload": {
+      "message": "Listening on projects/auditflow-492115/subscriptions/finance.invoice-sub...",
+      "timestamp": "2026-04-03T13:22:15.071347Z"
+    },
+    "labels": {
+      "instanceId": "008c15ff08d36c14a4043fd81716a1f6bb5d58ed5ecd571a5264e78846077bb43ca3f7f5c5f274e0f96f29c812a9827f5444b289335ade53d282caacc32faa02381d3e637c906583f62b7df4f6498eea26ba"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-04-03T13:22:15.398334503Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "sourceLocation": {
+      "file": "/app/agents/invoice_parser/../../agents/base_agent.py",
+      "function": "start_subscriber",
+      "line": "216"
+    },
+    "timestamp": "2026-04-03T13:22:15.070596Z"
+  },
+  {
+    "insertId": "69cfbf070000edc636f4de5a",
+    "labels": {
+      "instanceId": "008c15ff08d36c14a4043fd81716a1f6bb5d58ed5ecd571a5264e78846077bb43ca3f7f5c5f274e0f96f29c812a9827f5444b289335ade53d282caacc32faa02381d3e637c906583f62b7df4f6498eea26ba"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-04-03T13:22:15.075294499Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Default STARTUP TCP probe succeeded after 1 attempt for container \"invoice-parser-1\" on port 8080.",
+    "timestamp": "2026-04-03T13:22:15.060870Z"
+  },
+  {
+    "insertId": "69cfbf070000e4882ac2a990",
+    "jsonPayload": {
+      "message": "Started dummy HTTP server to satisfy Cloud Run health checks.",
+      "timestamp": "2026-04-03T13:22:15.059128Z"
+    },
+    "labels": {
+      "instanceId": "008c15ff08d36c14a4043fd81716a1f6bb5d58ed5ecd571a5264e78846077bb43ca3f7f5c5f274e0f96f29c812a9827f5444b289335ade53d282caacc32faa02381d3e637c906583f62b7df4f6498eea26ba"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-04-03T13:22:15.062576272Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "sourceLocation": {
+      "file": "/app/agents/invoice_parser/../../agents/base_agent.py",
+      "function": "start_subscriber",
+      "line": "204"
+    },
+    "timestamp": "2026-04-03T13:22:15.058504Z"
+  },
+  {
+    "insertId": "69cfbefb0005eaa153a8aea4",
+    "labels": {
+      "instanceId": "008c15ff08d36c14a4043fd81716a1f6bb5d58ed5ecd571a5264e78846077bb43ca3f7f5c5f274e0f96f29c812a9827f5444b289335ade53d282caacc32faa02381d3e637c906583f62b7df4f6498eea26ba",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-04-03T13:22:03.399445854Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00004-vlm",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-04-03T13:22:03.387745Z"
+  },
+  {
+    "insertId": "1vpcz9lcejv",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "114428711976274218675"
+        },
+        "principalEmail": "210230935248-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:210230935248-compute@developer.gserviceaccount.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {
+            "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "563.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/maxScale": "20",
+              "run.googleapis.com/operation-id": "3a50d526-2ca5-4e72-ab91-7e6407ec784f",
+              "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\"]",
+              "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+              "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+            },
+            "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+            "generation": 3,
+            "labels": {
+              "cloud.googleapis.com/location": "asia-southeast1",
+              "run.googleapis.com/satisfiesPzs": "true"
+            },
+            "name": "financepilot-invoice-parser",
+            "namespace": "210230935248",
+            "resourceVersion": "AAZOjgLAPp4",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+            "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "10",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "563.0.0",
+                  "run.googleapis.com/startup-cpu-boost": "true",
+                  "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                  "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "fvydlpvmke",
+                  "run.googleapis.com/startupProbeType": "Default"
+                }
+              },
+              "spec": {
+                "containerConcurrency": 80,
+                "containers": [
+                  {
+                    "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:00c1df17-ff8b-4ec8-835c-80be9cb6b7b7",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+                "timeoutSeconds": 300
+              }
+            },
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100
+              }
+            ]
+          },
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2026-04-03T13:08:18.721418Z",
+                "reason": "HealthCheckContainerError",
+                "status": "False",
+                "type": "Ready"
+              },
+              {
+                "lastTransitionTime": "2026-04-03T13:08:18.643838Z",
+                "reason": "HealthCheckContainerError",
+                "status": "False",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "lastTransitionTime": "2026-04-03T13:08:18.721418Z",
+                "reason": "HealthCheckContainerError",
+                "status": "False",
+                "type": "RoutesReady"
+              }
+            ],
+            "latestCreatedRevisionName": "financepilot-invoice-parser-00003-ghq",
+            "observedGeneration": 3
+          }
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "104.197.173.103",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/563.0.0 command/gcloud.run.deploy invocation-id/22033acb274745ce974674892972ca1e environment/GCE environment-version/None client-os/LINUX client-os-ver/5.10.0 client-pltf-arch/x86_64 interactive/False from-script/True python/3.13.10 term/  (Linux 5.10.0-32-cloud-amd64),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-04-03T13:21:46.120918Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "asia-southeast1"
+        ]
+      },
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-04-03T13:21:46.556156982Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-04-03T13:21:44.989177Z"
+  },
+  {
+    "insertId": "6zpy8edp4vi",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/operation-id": "3a50d526-2ca5-4e72-ab91-7e6407ec784f",
+            "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\"]",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+          "generation": 3,
+          "labels": {
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true"
+          },
+          "name": "financepilot-invoice-parser",
+          "namespace": "210230935248",
+          "resourceVersion": "AAZOjgK/Znw",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+          "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "10",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "563.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true",
+                "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "gfufpxihcn",
+                "run.googleapis.com/startupProbeType": "Default"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "GCP_PROJECT_ID",
+                      "value": "auditflow-492115"
+                    },
+                    {
+                      "name": "REDIS_HOST",
+                      "value": "10.8.0.3"
+                    },
+                    {
+                      "name": "SUPABASE_URL",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-url"
+                        }
+                      }
+                    },
+                    {
+                      "name": "SUPABASE_SERVICE_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-service-key"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GEMINI_API_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "gemini-api-key"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:3999306d-0697-421f-a51e-871e9c15719f",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 1,
+                    "periodSeconds": 240,
+                    "tcpSocket": {
+                      "port": 8080
+                    },
+                    "timeoutSeconds": 240
+                  }
+                }
+              ],
+              "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+              "timeoutSeconds": 300
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T13:08:18.643838Z",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "reason": "HealthCheckContainerError",
+              "status": "False",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:08:18.643838Z",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "reason": "HealthCheckContainerError",
+              "status": "False",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:08:03.248883Z",
+              "message": "Provisioning revision instances to receive traffic.",
+              "status": "Unknown",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "financepilot-invoice-parser-00003-ghq",
+          "observedGeneration": 3
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Service financepilot-invoice-parser with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      }
+    },
+    "receiveTimestamp": "2026-04-03T13:08:19.487631776Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "timestamp": "2026-04-03T13:08:18.701280Z"
+  },
+  {
+    "insertId": "z8lzoqdrwre",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/auditflow-492115/revisions/financepilot-invoice-parser-00003-ghq",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/operation-id": "3a50d526-2ca5-4e72-ab91-7e6407ec784f",
+            "run.googleapis.com/startup-cpu-boost": "true",
+            "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T13:07:54.167214Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "gfufpxihcn",
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Default",
+            "serving.knative.dev/configuration": "financepilot-invoice-parser",
+            "serving.knative.dev/configurationGeneration": "3",
+            "serving.knative.dev/route": "financepilot-invoice-parser",
+            "serving.knative.dev/service": "financepilot-invoice-parser",
+            "serving.knative.dev/serviceUid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "name": "financepilot-invoice-parser-00003-ghq",
+          "namespace": "210230935248",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "financepilot-invoice-parser",
+              "uid": "29f3cd43-dc66-4e7e-939b-c526eb902352"
+            }
+          ],
+          "resourceVersion": "AAZOjgK9+xM",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/revisions/financepilot-invoice-parser-00003-ghq",
+          "uid": "f42dc200-0ce3-4ea1-8d4a-32824bcf7e69"
+        },
+        "spec": {
+          "containerConcurrency": 80,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "GCP_PROJECT_ID",
+                  "value": "auditflow-492115"
+                },
+                {
+                  "name": "REDIS_HOST",
+                  "value": "10.8.0.3"
+                },
+                {
+                  "name": "SUPABASE_URL",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-url"
+                    }
+                  }
+                },
+                {
+                  "name": "SUPABASE_SERVICE_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-service-key"
+                    }
+                  }
+                },
+                {
+                  "name": "GEMINI_API_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "gemini-api-key"
+                    }
+                  }
+                }
+              ],
+              "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:46b7bb5e9cbe84075c90d92f69952323bea8ac47f6552d6acdbc18d6654ace59",
+              "name": "invoice-parser-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+          "timeoutSeconds": 300
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T13:08:18.591507Z",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "reason": "HealthCheckContainerError",
+              "status": "False",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:08:18.591507Z",
+              "message": "The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start",
+              "reason": "HealthCheckContainerError",
+              "status": "False",
+              "type": "ContainerHealthy"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:08:03.121968Z",
+              "message": "Container image import completed in 8.12s.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:08:06.741286Z",
+              "message": "Provisioning imported containers completed in 3.62s. Checking container health. This will wait for up to 4m for the configured startup probe, including an initial delay of 0s.",
+              "status": "True",
+              "type": "ResourcesAvailable"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T13:08:06.741286Z",
+              "message": "System will retry after 00:00 from lastTransitionTime for attempt 0.",
+              "reason": "ImmediateRetry",
+              "severity": "Info",
+              "status": "True",
+              "type": "Retry"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:46b7bb5e9cbe84075c90d92f69952323bea8ac47f6552d6acdbc18d6654ace59",
+              "name": "invoice-parser-1"
+            }
+          ],
+          "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:46b7bb5e9cbe84075c90d92f69952323bea8ac47f6552d6acdbc18d6654ace59",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Revision financepilot-invoice-parser-00003-ghq with message: The user-provided container failed to start and listen on the port defined provided by the PORT=8080 environment variable within the allocated timeout. This can happen when the container port is misconfigured or if the timeout is too short. The health check timeout can be extended. Logs for this revision might contain more information.\n\nLogs URL: https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00003-ghq&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00003-ghq%22 \nFor more troubleshooting guidance, see https://cloud.google.com/run/docs/troubleshooting#container-failed-to-start"
+      }
+    },
+    "receiveTimestamp": "2026-04-03T13:08:19.596816834Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00003-ghq",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "timestamp": "2026-04-03T13:08:18.606223Z"
+  },
+  {
+    "insertId": "69cfbbc200090537d70b6828",
+    "labels": {
+      "instanceId": "008c15ff0855074098c9525c567b6d64b0639a646bfc60e3d69531897834cfa57767a57c8c560f9cd740bb9319a0045611fb7aaf7970ca44973bba1aa1c6deb86958d3f8e5f5f8544cd511087481316294"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-04-03T13:08:18.790327872Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00003-ghq",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "textPayload": "Default STARTUP TCP probe failed 1 time consecutively for container \"invoice-parser-1\" on port 8080. The instance was not started.\nConnection failed with status CANCELLED.",
+    "timestamp": "2026-04-03T13:08:18.591159Z"
+  },
+  {
+    "insertId": "69cfbbc20006d6077f609aca",
+    "labels": {
+      "container_name": "invoice-parser-1",
+      "instanceId": "008c15ff0855074098c9525c567b6d64b0639a646bfc60e3d69531897834cfa57767a57c8c560f9cd740bb9319a0045611fb7aaf7970ca44973bba1aa1c6deb86958d3f8e5f5f8544cd511087481316294"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-04-03T13:08:18.452196103Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00003-ghq",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "WARNING",
+    "textPayload": "Container called exit(1).",
+    "timestamp": "2026-04-03T13:08:18.447914769Z"
+  },
+  {
+    "errorGroups": [
+      {
+        "id": "CLzT58fe-aXXwgE"
+      }
+    ],
+    "insertId": "69cfbbc100091bc152704576",
+    "labels": {
+      "instanceId": "008c15ff0855074098c9525c567b6d64b0639a646bfc60e3d69531897834cfa57767a57c8c560f9cd740bb9319a0045611fb7aaf7970ca44973bba1aa1c6deb86958d3f8e5f5f8544cd511087481316294"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fstderr",
+    "receiveTimestamp": "2026-04-03T13:08:17.601046044Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00003-ghq",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "textPayload": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/app/agents/invoice_parser/main.py\", line 140, in <module>\n    agent.start_subscriber()\n  File \"/app/agents/invoice_parser/../../agents/base_agent.py\", line 197, in start_subscriber\n    streaming_pull_future.result()\n  File \"/usr/local/lib/python3.12/concurrent/futures/_base.py\", line 456, in result\n    return self.__get_result()\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/concurrent/futures/_base.py\", line 401, in __get_result\n    raise self._exception\ngoogle.api_core.exceptions.NotFound: 404 Resource not found (resource=finance.invoice-sub).",
+    "timestamp": "2026-04-03T13:08:17.596929Z"
+  },
+  {
+    "insertId": "69cfbbc1000367a9fba68dc1",
+    "jsonPayload": {
+      "message": "Listening on projects/auditflow-492115/subscriptions/finance.invoice-sub...",
+      "timestamp": "2026-04-03T13:08:17.221270Z"
+    },
+    "labels": {
+      "instanceId": "008c15ff0855074098c9525c567b6d64b0639a646bfc60e3d69531897834cfa57767a57c8c560f9cd740bb9319a0045611fb7aaf7970ca44973bba1aa1c6deb86958d3f8e5f5f8544cd511087481316294"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fstdout",
+    "receiveTimestamp": "2026-04-03T13:08:17.232353615Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00003-ghq",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "sourceLocation": {
+      "file": "/app/agents/invoice_parser/../../agents/base_agent.py",
+      "function": "start_subscriber",
+      "line": "194"
+    },
+    "timestamp": "2026-04-03T13:08:17.223145Z"
+  },
+  {
+    "insertId": "69cfbbb6000cfc84a230d3f5",
+    "labels": {
+      "instanceId": "008c15ff0855074098c9525c567b6d64b0639a646bfc60e3d69531897834cfa57767a57c8c560f9cd740bb9319a0045611fb7aaf7970ca44973bba1aa1c6deb86958d3f8e5f5f8544cd511087481316294",
+      "scaling_reason": "DEPLOYMENT_ROLLOUT"
+    },
+    "logName": "projects/auditflow-492115/logs/run.googleapis.com%2Fvarlog%2Fsystem",
+    "receiveTimestamp": "2026-04-03T13:08:06.856729015Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00003-ghq",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "INFO",
+    "textPayload": "Starting new instance. Reason: DEPLOYMENT_ROLLOUT - Instance started due to traffic shifting between revisions due to deployment, traffic split adjustment, or deployment health check.",
+    "timestamp": "2026-04-03T13:08:06.851076Z"
+  },
+  {
+    "insertId": "w6qgh3d96xq",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "114428711976274218675"
+        },
+        "principalEmail": "210230935248-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:210230935248-compute@developer.gserviceaccount.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {
+            "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "563.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/maxScale": "20",
+              "run.googleapis.com/operation-id": "3e89b753-0ebe-4501-88a0-e93377970d1f",
+              "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\"]",
+              "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+              "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+            },
+            "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+            "generation": 2,
+            "labels": {
+              "cloud.googleapis.com/location": "asia-southeast1",
+              "run.googleapis.com/satisfiesPzs": "true"
+            },
+            "name": "financepilot-invoice-parser",
+            "namespace": "210230935248",
+            "resourceVersion": "AAZOjamt9lA",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+            "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "10",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "563.0.0",
+                  "run.googleapis.com/startup-cpu-boost": "true",
+                  "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                  "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "gfufpxihcn",
+                  "run.googleapis.com/startupProbeType": "Default"
+                }
+              },
+              "spec": {
+                "containerConcurrency": 80,
+                "containers": [
+                  {
+                    "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:3999306d-0697-421f-a51e-871e9c15719f",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+                "timeoutSeconds": 300
+              }
+            },
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100
+              }
+            ]
+          },
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2026-04-03T12:43:24.288097Z",
+                "reason": "VpcNetworkNotFound",
+                "status": "False",
+                "type": "Ready"
+              },
+              {
+                "lastTransitionTime": "2026-04-03T12:43:24.266762Z",
+                "reason": "VpcNetworkNotFound",
+                "status": "False",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "lastTransitionTime": "2026-04-03T12:43:24.288097Z",
+                "reason": "VpcNetworkNotFound",
+                "status": "False",
+                "type": "RoutesReady"
+              }
+            ],
+            "latestCreatedRevisionName": "financepilot-invoice-parser-00002-zqn",
+            "observedGeneration": 2
+          }
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "35.227.154.211",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/563.0.0 command/gcloud.run.deploy invocation-id/a4349ef68f464bc4a5b6bfa30a1e11db environment/GCE environment-version/None client-os/LINUX client-os-ver/5.10.0 client-pltf-arch/x86_64 interactive/False from-script/True python/3.13.10 term/  (Linux 5.10.0-32-cloud-amd64),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-04-03T13:07:54.117006Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "asia-southeast1"
+        ]
+      },
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-04-03T13:07:55.080455131Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-04-03T13:07:53.078345Z"
+  },
+  {
+    "insertId": "-twz509dym2c",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/operation-id": "3e89b753-0ebe-4501-88a0-e93377970d1f",
+            "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\"]",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+          "generation": 2,
+          "labels": {
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true"
+          },
+          "name": "financepilot-invoice-parser",
+          "namespace": "210230935248",
+          "resourceVersion": "AAZOjamtN4Q",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+          "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "10",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "563.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true",
+                "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "ozwamyijdn",
+                "run.googleapis.com/startupProbeType": "Default"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "GCP_PROJECT_ID",
+                      "value": "auditflow-492115"
+                    },
+                    {
+                      "name": "REDIS_HOST",
+                      "value": "10.8.0.3"
+                    },
+                    {
+                      "name": "SUPABASE_URL",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-url"
+                        }
+                      }
+                    },
+                    {
+                      "name": "SUPABASE_SERVICE_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-service-key"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GEMINI_API_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "gemini-api-key"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:626f5048-031a-4535-b444-713a43a5ae92",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 1,
+                    "periodSeconds": 240,
+                    "tcpSocket": {
+                      "port": 8080
+                    },
+                    "timeoutSeconds": 240
+                  }
+                }
+              ],
+              "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+              "timeoutSeconds": 300
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T12:43:24.266762Z",
+              "message": "VPC connector projects/auditflow-492115/locations/asia-southeast1/connectors/financepilot-vpc does not exist, or Cloud Run does not have permission to use it.",
+              "reason": "VpcNetworkNotFound",
+              "status": "False",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T12:43:24.266762Z",
+              "message": "VPC connector projects/auditflow-492115/locations/asia-southeast1/connectors/financepilot-vpc does not exist, or Cloud Run does not have permission to use it.",
+              "reason": "VpcNetworkNotFound",
+              "status": "False",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T12:43:23.203703Z",
+              "message": "Provisioning revision instances to receive traffic.",
+              "status": "Unknown",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "financepilot-invoice-parser-00002-zqn",
+          "observedGeneration": 2
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Service financepilot-invoice-parser with message: VPC connector projects/auditflow-492115/locations/asia-southeast1/connectors/financepilot-vpc does not exist, or Cloud Run does not have permission to use it."
+      }
+    },
+    "receiveTimestamp": "2026-04-03T12:43:25.022034429Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "timestamp": "2026-04-03T12:43:24.334280Z"
+  },
+  {
+    "insertId": "-26t235dlzpc",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.ReplaceService",
+      "resourceName": "namespaces/auditflow-492115/revisions/financepilot-invoice-parser-00002-zqn",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/operation-id": "3e89b753-0ebe-4501-88a0-e93377970d1f",
+            "run.googleapis.com/startup-cpu-boost": "true",
+            "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T12:43:15.375348Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "ozwamyijdn",
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Default",
+            "serving.knative.dev/configuration": "financepilot-invoice-parser",
+            "serving.knative.dev/configurationGeneration": "2",
+            "serving.knative.dev/route": "financepilot-invoice-parser",
+            "serving.knative.dev/service": "financepilot-invoice-parser",
+            "serving.knative.dev/serviceUid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "name": "financepilot-invoice-parser-00002-zqn",
+          "namespace": "210230935248",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "financepilot-invoice-parser",
+              "uid": "29f3cd43-dc66-4e7e-939b-c526eb902352"
+            }
+          ],
+          "resourceVersion": "AAZOjamriSk",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/revisions/financepilot-invoice-parser-00002-zqn",
+          "uid": "e2a31f99-8ff6-4290-9354-b5d51904cb4c"
+        },
+        "spec": {
+          "containerConcurrency": 80,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "GCP_PROJECT_ID",
+                  "value": "auditflow-492115"
+                },
+                {
+                  "name": "REDIS_HOST",
+                  "value": "10.8.0.3"
+                },
+                {
+                  "name": "SUPABASE_URL",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-url"
+                    }
+                  }
+                },
+                {
+                  "name": "SUPABASE_SERVICE_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-service-key"
+                    }
+                  }
+                },
+                {
+                  "name": "GEMINI_API_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "gemini-api-key"
+                    }
+                  }
+                }
+              ],
+              "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:6f193c22e5a1256f4bfe845dd1712ae75383d2b775599384615d92d8e843716b",
+              "name": "invoice-parser-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+          "timeoutSeconds": 300
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T12:43:24.210473Z",
+              "message": "VPC connector projects/auditflow-492115/locations/asia-southeast1/connectors/financepilot-vpc does not exist, or Cloud Run does not have permission to use it.",
+              "reason": "VpcNetworkNotFound",
+              "status": "False",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T12:43:23.087845Z",
+              "message": "Container image import completed in 7.08s.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T12:43:24.210473Z",
+              "message": "VPC connector projects/auditflow-492115/locations/asia-southeast1/connectors/financepilot-vpc does not exist, or Cloud Run does not have permission to use it.",
+              "reason": "VpcNetworkNotFound",
+              "severity": "Error",
+              "status": "False",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:6f193c22e5a1256f4bfe845dd1712ae75383d2b775599384615d92d8e843716b",
+              "name": "invoice-parser-1"
+            }
+          ],
+          "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:6f193c22e5a1256f4bfe845dd1712ae75383d2b775599384615d92d8e843716b",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00002-zqn&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00002-zqn%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Revision financepilot-invoice-parser-00002-zqn with message: VPC connector projects/auditflow-492115/locations/asia-southeast1/connectors/financepilot-vpc does not exist, or Cloud Run does not have permission to use it."
+      }
+    },
+    "receiveTimestamp": "2026-04-03T12:43:24.794661740Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00002-zqn",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "timestamp": "2026-04-03T12:43:24.226677Z"
+  },
+  {
+    "insertId": "xc5iy4db236",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "114428711976274218675"
+        },
+        "principalEmail": "210230935248-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:210230935248-compute@developer.gserviceaccount.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.update",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {
+            "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.ReplaceService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.ReplaceServiceRequest",
+        "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "563.0.0",
+              "run.googleapis.com/ingress": "all",
+              "run.googleapis.com/ingress-status": "all",
+              "run.googleapis.com/maxScale": "20",
+              "run.googleapis.com/operation-id": "8ea5a266-b521-41be-a2fa-1bbeed4dfe07",
+              "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\"]",
+              "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+              "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+            },
+            "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+            "generation": 1,
+            "labels": {
+              "cloud.googleapis.com/location": "asia-southeast1",
+              "run.googleapis.com/satisfiesPzs": "true"
+            },
+            "name": "financepilot-invoice-parser",
+            "namespace": "210230935248",
+            "resourceVersion": "AAZOiYZLrpM",
+            "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+            "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "10",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "563.0.0",
+                  "run.googleapis.com/startup-cpu-boost": "true",
+                  "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                  "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "ozwamyijdn",
+                  "run.googleapis.com/startupProbeType": "Default"
+                }
+              },
+              "spec": {
+                "containerConcurrency": 80,
+                "containers": [
+                  {
+                    "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:626f5048-031a-4535-b444-713a43a5ae92",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+                "timeoutSeconds": 300
+              }
+            },
+            "traffic": [
+              {
+                "latestRevision": true,
+                "percent": 100
+              }
+            ]
+          },
+          "status": {
+            "conditions": [
+              {
+                "lastTransitionTime": "2026-04-03T07:47:10.791592Z",
+                "reason": "SecretsAccessCheckFailed",
+                "status": "False",
+                "type": "Ready"
+              },
+              {
+                "lastTransitionTime": "2026-04-03T07:47:10.770302Z",
+                "reason": "SecretsAccessCheckFailed",
+                "status": "False",
+                "type": "ConfigurationsReady"
+              },
+              {
+                "lastTransitionTime": "2026-04-03T07:47:10.791592Z",
+                "reason": "SecretsAccessCheckFailed",
+                "status": "False",
+                "type": "RoutesReady"
+              }
+            ],
+            "latestCreatedRevisionName": "financepilot-invoice-parser-00001-p4c",
+            "observedGeneration": 1
+          }
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "34.82.39.202",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/563.0.0 command/gcloud.run.deploy invocation-id/f8961c53b4464fa3981272cb43049d63 environment/GCE environment-version/None client-os/LINUX client-os-ver/5.10.0 client-pltf-arch/x86_64 interactive/False from-script/True python/3.13.10 term/  (Linux 5.10.0-32-cloud-amd64),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-04-03T12:43:15.330560Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "asia-southeast1"
+        ]
+      },
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-04-03T12:43:15.944613009Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-04-03T12:43:14.224654Z"
+  },
+  {
+    "insertId": "z8lzoqdpbto",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.CreateService",
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Service",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Service",
+        "metadata": {
+          "annotations": {
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/ingress": "all",
+            "run.googleapis.com/ingress-status": "all",
+            "run.googleapis.com/maxScale": "20",
+            "run.googleapis.com/operation-id": "8ea5a266-b521-41be-a2fa-1bbeed4dfe07",
+            "run.googleapis.com/urls": "[\"https://financepilot-invoice-parser-210230935248.asia-southeast1.run.app\"]",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com",
+            "serving.knative.dev/lastModifier": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T07:46:57.277516Z",
+          "generation": 1,
+          "labels": {
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true"
+          },
+          "name": "financepilot-invoice-parser",
+          "namespace": "210230935248",
+          "resourceVersion": "AAZOiYZK6ss",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/services/financepilot-invoice-parser",
+          "uid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+        },
+        "spec": {
+          "template": {
+            "metadata": {
+              "annotations": {
+                "autoscaling.knative.dev/maxScale": "10",
+                "run.googleapis.com/client-name": "gcloud",
+                "run.googleapis.com/client-version": "563.0.0",
+                "run.googleapis.com/startup-cpu-boost": "true",
+                "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+                "run.googleapis.com/vpc-access-egress": "private-ranges-only"
+              },
+              "labels": {
+                "client.knative.dev/nonce": "gulggzbdqm",
+                "run.googleapis.com/startupProbeType": "Default"
+              }
+            },
+            "spec": {
+              "containerConcurrency": 80,
+              "containers": [
+                {
+                  "env": [
+                    {
+                      "name": "GCP_PROJECT_ID",
+                      "value": "auditflow-492115"
+                    },
+                    {
+                      "name": "REDIS_HOST",
+                      "value": "10.8.0.3"
+                    },
+                    {
+                      "name": "SUPABASE_URL",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-url"
+                        }
+                      }
+                    },
+                    {
+                      "name": "SUPABASE_SERVICE_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "supabase-service-key"
+                        }
+                      }
+                    },
+                    {
+                      "name": "GEMINI_API_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "key": "latest",
+                          "name": "gemini-api-key"
+                        }
+                      }
+                    }
+                  ],
+                  "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:971c3508-d50a-4082-8c52-74628bf435a5",
+                  "ports": [
+                    {
+                      "containerPort": 8080,
+                      "name": "http1"
+                    }
+                  ],
+                  "resources": {
+                    "limits": {
+                      "cpu": "1",
+                      "memory": "512Mi"
+                    }
+                  },
+                  "startupProbe": {
+                    "failureThreshold": 1,
+                    "periodSeconds": 240,
+                    "tcpSocket": {
+                      "port": 8080
+                    },
+                    "timeoutSeconds": 240
+                  }
+                }
+              ],
+              "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+              "timeoutSeconds": 300
+            }
+          },
+          "traffic": [
+            {
+              "latestRevision": true,
+              "percent": 100
+            }
+          ]
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T07:47:10.770302Z",
+              "message": "spec.template.spec.containers[0].env[2].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-url/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[3].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-service-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[4].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/gemini-api-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.",
+              "reason": "SecretsAccessCheckFailed",
+              "status": "False",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T07:47:10.770302Z",
+              "message": "spec.template.spec.containers[0].env[2].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-url/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[3].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-service-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[4].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/gemini-api-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.",
+              "reason": "SecretsAccessCheckFailed",
+              "status": "False",
+              "type": "ConfigurationsReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T07:47:10.367242Z",
+              "message": "Provisioning revision instances to receive traffic.",
+              "status": "Unknown",
+              "type": "RoutesReady"
+            }
+          ],
+          "latestCreatedRevisionName": "financepilot-invoice-parser-00001-p4c",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Service financepilot-invoice-parser with message: spec.template.spec.containers[0].env[2].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-url/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[3].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-service-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[4].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/gemini-api-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level."
+      }
+    },
+    "receiveTimestamp": "2026-04-03T07:47:11.597054414Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "timestamp": "2026-04-03T07:47:10.821980Z"
+  },
+  {
+    "insertId": "-twz509dviha",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Fsystem_event",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "methodName": "/Services.CreateService",
+      "resourceName": "namespaces/auditflow-492115/revisions/financepilot-invoice-parser-00001-p4c",
+      "response": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.Revision",
+        "apiVersion": "serving.knative.dev/v1",
+        "kind": "Revision",
+        "metadata": {
+          "annotations": {
+            "autoscaling.knative.dev/maxScale": "10",
+            "run.googleapis.com/client-name": "gcloud",
+            "run.googleapis.com/client-version": "563.0.0",
+            "run.googleapis.com/operation-id": "8ea5a266-b521-41be-a2fa-1bbeed4dfe07",
+            "run.googleapis.com/startup-cpu-boost": "true",
+            "run.googleapis.com/vpc-access-connector": "financepilot-vpc",
+            "run.googleapis.com/vpc-access-egress": "private-ranges-only",
+            "serving.knative.dev/creator": "210230935248-compute@developer.gserviceaccount.com"
+          },
+          "creationTimestamp": "2026-04-03T07:46:57.505671Z",
+          "generation": 1,
+          "labels": {
+            "client.knative.dev/nonce": "gulggzbdqm",
+            "cloud.googleapis.com/location": "asia-southeast1",
+            "run.googleapis.com/satisfiesPzs": "true",
+            "run.googleapis.com/startupProbeType": "Default",
+            "serving.knative.dev/configuration": "financepilot-invoice-parser",
+            "serving.knative.dev/configurationGeneration": "1",
+            "serving.knative.dev/route": "financepilot-invoice-parser",
+            "serving.knative.dev/service": "financepilot-invoice-parser",
+            "serving.knative.dev/serviceUid": "27972c6b-e6a9-430a-ab75-7545f235b3f3"
+          },
+          "name": "financepilot-invoice-parser-00001-p4c",
+          "namespace": "210230935248",
+          "ownerReferences": [
+            {
+              "apiVersion": "serving.knative.dev/v1",
+              "blockOwnerDeletion": true,
+              "controller": true,
+              "kind": "Configuration",
+              "name": "financepilot-invoice-parser",
+              "uid": "29f3cd43-dc66-4e7e-939b-c526eb902352"
+            }
+          ],
+          "resourceVersion": "AAZOiYZJ1Ko",
+          "selfLink": "/apis/serving.knative.dev/v1/namespaces/210230935248/revisions/financepilot-invoice-parser-00001-p4c",
+          "uid": "a57b7cd1-510f-422d-8a31-7ff971c0b322"
+        },
+        "spec": {
+          "containerConcurrency": 80,
+          "containers": [
+            {
+              "env": [
+                {
+                  "name": "GCP_PROJECT_ID",
+                  "value": "auditflow-492115"
+                },
+                {
+                  "name": "REDIS_HOST",
+                  "value": "10.8.0.3"
+                },
+                {
+                  "name": "SUPABASE_URL",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-url"
+                    }
+                  }
+                },
+                {
+                  "name": "SUPABASE_SERVICE_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "supabase-service-key"
+                    }
+                  }
+                },
+                {
+                  "name": "GEMINI_API_KEY",
+                  "valueFrom": {
+                    "secretKeyRef": {
+                      "key": "latest",
+                      "name": "gemini-api-key"
+                    }
+                  }
+                }
+              ],
+              "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:863abff43f0e5fe6a521079114cdfba03c8cc09bc44fa88efbd6d809d1893aff",
+              "name": "invoice-parser-1",
+              "ports": [
+                {
+                  "containerPort": 8080,
+                  "name": "http1"
+                }
+              ],
+              "resources": {
+                "limits": {
+                  "cpu": "1",
+                  "memory": "512Mi"
+                }
+              },
+              "startupProbe": {
+                "failureThreshold": 1,
+                "periodSeconds": 240,
+                "tcpSocket": {
+                  "port": 8080
+                },
+                "timeoutSeconds": 240
+              }
+            }
+          ],
+          "serviceAccountName": "210230935248-compute@developer.gserviceaccount.com",
+          "timeoutSeconds": 300
+        },
+        "status": {
+          "conditions": [
+            {
+              "lastTransitionTime": "2026-04-03T07:47:10.735530Z",
+              "message": "spec.template.spec.containers[0].env[2].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-url/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[3].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-service-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[4].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/gemini-api-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.",
+              "reason": "SecretsAccessCheckFailed",
+              "status": "False",
+              "type": "Ready"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T07:47:10.250732Z",
+              "message": "Container image import completed in 11.98s.",
+              "status": "True",
+              "type": "ContainerReady"
+            },
+            {
+              "lastTransitionTime": "2026-04-03T07:47:10.735530Z",
+              "message": "spec.template.spec.containers[0].env[2].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-url/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[3].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-service-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[4].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/gemini-api-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.",
+              "reason": "SecretsAccessCheckFailed",
+              "status": "False",
+              "type": "ResourcesAvailable"
+            }
+          ],
+          "containerStatuses": [
+            {
+              "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:863abff43f0e5fe6a521079114cdfba03c8cc09bc44fa88efbd6d809d1893aff",
+              "name": "invoice-parser-1"
+            }
+          ],
+          "imageDigest": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser@sha256:863abff43f0e5fe6a521079114cdfba03c8cc09bc44fa88efbd6d809d1893aff",
+          "logUrl": "https://console.cloud.google.com/logs/viewer?project=auditflow-492115&resource=cloud_run_revision/service_name/financepilot-invoice-parser/revision_name/financepilot-invoice-parser-00001-p4c&advancedFilter=resource.type%3D%22cloud_run_revision%22%0Aresource.labels.service_name%3D%22financepilot-invoice-parser%22%0Aresource.labels.revision_name%3D%22financepilot-invoice-parser-00001-p4c%22",
+          "observedGeneration": 1
+        }
+      },
+      "serviceName": "run.googleapis.com",
+      "status": {
+        "code": 9,
+        "message": "Ready condition status changed to False for Revision financepilot-invoice-parser-00001-p4c with message: spec.template.spec.containers[0].env[2].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-url/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[3].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/supabase-service-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level.\nspec.template.spec.containers[0].env[4].value_from.secret_key_ref.name: Permission denied on secret: projects/210230935248/secrets/gemini-api-key/versions/latest for Revision service account 210230935248-compute@developer.gserviceaccount.com. The service account used must be granted the 'Secret Manager Secret Accessor' role (roles/secretmanager.secretAccessor) at the secret, project or higher level."
+      }
+    },
+    "receiveTimestamp": "2026-04-03T07:47:11.057858567Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "financepilot-invoice-parser",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "financepilot-invoice-parser-00001-p4c",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "ERROR",
+    "timestamp": "2026-04-03T07:47:10.745909Z"
+  },
+  {
+    "insertId": "xc5iy4damrj",
+    "logName": "projects/auditflow-492115/logs/cloudaudit.googleapis.com%2Factivity",
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "authenticationInfo": {
+        "oauthInfo": {
+          "oauthClientId": "114428711976274218675"
+        },
+        "principalEmail": "210230935248-compute@developer.gserviceaccount.com",
+        "principalSubject": "serviceAccount:210230935248-compute@developer.gserviceaccount.com"
+      },
+      "authorizationInfo": [
+        {
+          "granted": true,
+          "permission": "run.services.create",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {}
+        },
+        {
+          "granted": true,
+          "permission": "run.services.create",
+          "permissionType": "ADMIN_WRITE",
+          "resource": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+          "resourceAttributes": {
+            "name": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+            "service": "run.googleapis.com/",
+            "type": "run.googleapis.com/Service"
+          }
+        }
+      ],
+      "methodName": "google.cloud.run.v1.Services.CreateService",
+      "request": {
+        "@type": "type.googleapis.com/google.cloud.run.v1.CreateServiceRequest",
+        "parent": "namespaces/auditflow-492115",
+        "service": {
+          "apiVersion": "serving.knative.dev/v1",
+          "kind": "Service",
+          "metadata": {
+            "annotations": {
+              "run.googleapis.com/client-name": "gcloud",
+              "run.googleapis.com/client-version": "563.0.0"
+            },
+            "name": "financepilot-invoice-parser",
+            "namespace": "auditflow-492115"
+          },
+          "spec": {
+            "template": {
+              "metadata": {
+                "annotations": {
+                  "autoscaling.knative.dev/maxScale": "10",
+                  "run.googleapis.com/client-name": "gcloud",
+                  "run.googleapis.com/client-version": "563.0.0",
+                  "run.googleapis.com/startup-cpu-boost": "True",
+                  "run.googleapis.com/vpc-access-connector": "financepilot-vpc"
+                },
+                "labels": {
+                  "client.knative.dev/nonce": "gulggzbdqm"
+                }
+              },
+              "spec": {
+                "containers": [
+                  {
+                    "image": "asia-southeast1-docker.pkg.dev/auditflow-492115/financepilot/invoice-parser:971c3508-d50a-4082-8c52-74628bf435a5",
+                    "name": "",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "512Mi"
+                      }
+                    }
+                  }
+                ],
+                "timeoutSeconds": 300
+              }
+            }
+          },
+          "status": {}
+        }
+      },
+      "requestMetadata": {
+        "callerIp": "34.82.114.149",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/563.0.0 command/gcloud.run.deploy invocation-id/05793ac61ed541afa8176daca509723c environment/GCE environment-version/None client-os/LINUX client-os-ver/5.10.0 client-pltf-arch/x86_64 interactive/False from-script/True python/3.13.10 term/  (Linux 5.10.0-32-cloud-amd64),gzip(gfe)",
+        "destinationAttributes": {},
+        "requestAttributes": {
+          "auth": {},
+          "time": "2026-04-03T07:46:57.468342Z"
+        }
+      },
+      "resourceLocation": {
+        "currentLocations": [
+          "asia-southeast1"
+        ]
+      },
+      "resourceName": "namespaces/auditflow-492115/services/financepilot-invoice-parser",
+      "serviceName": "run.googleapis.com",
+      "status": {}
+    },
+    "receiveTimestamp": "2026-04-03T07:46:58.033719578Z",
+    "resource": {
+      "labels": {
+        "configuration_name": "",
+        "location": "asia-southeast1",
+        "project_id": "auditflow-492115",
+        "revision_name": "",
+        "service_name": "financepilot-invoice-parser"
+      },
+      "type": "cloud_run_revision"
+    },
+    "severity": "NOTICE",
+    "timestamp": "2026-04-03T07:46:56.939321Z"
+  }
+]
