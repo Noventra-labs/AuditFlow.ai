@@ -370,13 +370,26 @@ async def get_agent_status(user: dict = Depends(verify_token_optional)):
         "invoice_parser_agent", "reconciliation_agent", "tax_compliance_agent",
         "forecast_agent", "report_agent", "alert_agent",
     ]
+
+    # Fetch logs for the specified agents in a single query
+    # Ordered descending by created_at so the first one we see is the latest
+    logs = supabase.table("agent_audit_log").select("agent_name,action,created_at,duration_ms").in_("agent_name", agents).order("created_at", desc=True).execute()
+
+    # Process logs in memory to find the latest for each agent
+    latest_logs_by_agent = {}
+    if logs.data:
+        for log in logs.data:
+            agent_name = log.get("agent_name")
+            if agent_name and agent_name not in latest_logs_by_agent:
+                latest_logs_by_agent[agent_name] = log
+
     status = []
     for agent in agents:
-        latest = supabase.table("agent_audit_log").select("agent_name,action,created_at,duration_ms").eq("agent_name", agent).order("created_at", desc=True).limit(1).execute()
+        latest_log = latest_logs_by_agent.get(agent)
         status.append({
             "agent": agent,
-            "status": "active" if latest.data else "idle",
-            "last_activity": latest.data[0] if latest.data else None,
+            "status": "active" if latest_log else "idle",
+            "last_activity": latest_log,
         })
     return {"agents": status}
 
