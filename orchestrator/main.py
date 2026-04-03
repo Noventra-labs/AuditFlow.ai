@@ -249,7 +249,8 @@ async def get_invoice(
         raise HTTPException(status_code=404, detail="Invoice not found")
 
     # Get audit logs for this invoice
-    logs = supabase.table("agent_audit_log").select("*").like("input_summary", f"%{invoice_id}%").execute()
+    safe_invoice_id = invoice_id.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+    logs = supabase.table("agent_audit_log").select("*").like("input_summary", f"%{safe_invoice_id}%").execute()
 
     return {"invoice": result.data[0], "agent_log": logs.data}
 
