@@ -74,10 +74,12 @@ class ReportAgent(BaseFinanceAgent):
         top_vendor_ids = sorted(vendor_totals.keys(), key=lambda k: -vendor_totals[k])[:5]
 
         top_vendors = []
-        for v_id in top_vendor_ids:
-            v_resp = self.supabase.table("vendors").select("name").eq("id", v_id).execute()
-            name = v_resp.data[0]["name"] if v_resp.data else v_id
-            top_vendors.append({"name": name, "amount": vendor_totals[v_id], "status": "Active"})
+        if top_vendor_ids:
+            v_resp = self.supabase.table("vendors").select("id", "name").in_("id", top_vendor_ids).execute()
+            vendor_names = {v["id"]: v["name"] for v in v_resp.data} if v_resp.data else {}
+            for v_id in top_vendor_ids:
+                name = vendor_names.get(v_id, v_id)
+                top_vendors.append({"name": name, "amount": vendor_totals[v_id], "status": "Active"})
 
         # Generate narrative with Claude
         narrative_prompt = f"""Write a brief executive summary for this {report_type} financial report:
