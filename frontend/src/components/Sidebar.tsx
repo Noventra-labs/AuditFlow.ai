@@ -53,14 +53,15 @@ export default function Sidebar({ activeView, onNavigate }: SidebarProps) {
           <div key={section.title} className="nav-section">
             <div className="nav-section-title">{section.title}</div>
             {section.items.map((item) => (
-              <div
+              <button
                 key={item.id}
+                type="button"
                 className={`nav-item ${activeView === item.id ? 'active' : ''}`}
                 onClick={() => onNavigate(item.id)}
               >
                 <span className="icon">{item.icon}</span>
                 {item.label}
-              </div>
+              </button>
             ))}
           </div>
         ))}

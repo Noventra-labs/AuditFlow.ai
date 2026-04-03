@@ -1,0 +1,1093 @@
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 1 of 27 GOOGLE GEN ACADEMY APAC · COHORT 1  
+FinancePilot  
+Frontend Design System & UX Specification  
+Complete design guide for all 7 tabs · Colors · Typography · Components · UX principles  
+Luxury Minimal Dark · Instrument Serif + DM Mono + Plus Jakarta Sans · Bloomberg meets Stripe  
+ 
+  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 2 of 27 Table of Contents  
+Table of Contents  ................................ ................................ ................................ ............................  2 
+The Design Direction — Luxury Minimal Dark  ................................ ................................ ..............  4 
+Font System  ................................ ................................ ................................ ................................  4 
+Global Color Palette  ................................ ................................ ................................ .....................  4 
+Spacing & Grid System  ................................ ................................ ................................ ................  5 
+Global Layout Architecture  ................................ ................................ ................................ ...........  6 
+Animation & Micro -interaction System  ................................ ................................ .........................  6 
+KPI Metric Card  ................................ ................................ ................................ ...........................  8 
+Data Table Component  ................................ ................................ ................................ ................  8 
+Status Badge System (Full Specification)  ................................ ................................ ....................  8 
+Search & Filter Bar Component  ................................ ................................ ................................ ... 9 
+Notification & Toast System  ................................ ................................ ................................ .........  9 
+Overview & Design Intent  ................................ ................................ ................................ ..........  11 
+Background & Visual Theme  ................................ ................................ ................................ .. 11 
+Features & Components (Detailed)  ................................ ................................ ........................  11 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 12 
+Component Specifications  ................................ ................................ ................................ ...... 12 
+UX Principles for this Tab  ................................ ................................ ................................ ....... 12 
+Overview & Design Intent  ................................ ................................ ................................ ..........  13 
+Background & Visual Theme  ................................ ................................ ................................ .. 13 
+Features & Components (Detailed)  ................................ ................................ ........................  13 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 14 
+Component Specifications  ................................ ................................ ................................ ...... 14 
+UX Principles for this Tab  ................................ ................................ ................................ ....... 15 
+Overview & Design Intent  ................................ ................................ ................................ ..........  15 
+Background & Visual Theme  ................................ ................................ ................................ .. 15 
+Features & Components (Detailed)  ................................ ................................ ........................  15 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 16 
+Component Specifications  ................................ ................................ ................................ ...... 16 
+UX Principles for this Tab  ................................ ................................ ................................ ....... 17 
+Overview & Design Intent  ................................ ................................ ................................ ..........  17 
+Background & Visual Theme  ................................ ................................ ................................ .. 17 
+Features & Components (Detailed)  ................................ ................................ ........................  17 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 18 
+Component Specifications  ................................ ................................ ................................ ...... 19 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 3 of 27 UX Principles for this Tab  ................................ ................................ ................................ ....... 19 
+Overview & Design Intent  ................................ ................................ ................................ ..........  19 
+Background & Visual Theme  ................................ ................................ ................................ .. 19 
+Features & Components (Detailed)  ................................ ................................ ........................  20 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 21 
+Component Specifications  ................................ ................................ ................................ ...... 21 
+UX Principles for this Tab  ................................ ................................ ................................ ....... 21 
+Overview & Design Intent  ................................ ................................ ................................ ..........  21 
+Background & Visual Theme  ................................ ................................ ................................ .. 22 
+Features & Components (Detailed)  ................................ ................................ ........................  22 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 23 
+Component Specifications  ................................ ................................ ................................ ...... 23 
+UX Principles for this Tab  ................................ ................................ ................................ ....... 23 
+Overview & Design Intent  ................................ ................................ ................................ ..........  24 
+Background & Visual Theme  ................................ ................................ ................................ .. 24 
+Features & Components (Detailed)  ................................ ................................ ........................  24 
+Action Buttons on this Tab  ................................ ................................ ................................ ..... 25 
+Component Specifications  ................................ ................................ ................................ ...... 25 
+UX Principles for this Tab  ................................ ................................ ................................ ....... 25 
+Breakpoint System  ................................ ................................ ................................ .....................  27 
+Accessibility Requirements (WCAG 2.1 AA)  ................................ ................................ ..............  27 
+ 
+  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 4 of 27 01  DESIGN PHILOSOPHY  
+The aesthetic direction, principles and rationale  
+The Design Direction — Luxury Minimal Dark  
+FinancePilot's frontend is designed around a single powerful aesthetic: what would Bloomberg 
+Terminal look like if Stripe redesigned it? The answer is a dark -first, data -dense, but breathable 
+interface where every element earns its place. Financial profess ionals trust tools that look serious, 
+precise, and capable — not playful or experimental.  
+ 
+Core aesthetic direction: Luxury Minimal Dark. Dark carbon background (#0D1117), crisp green accent 
+as the single dominant colour, Instrument Serif for hero numbers to add warmth, DM Mono for all 
+financial data, generous whitespace within a dense informati on architecture.  
+ 
+Font System  
+Font Family  Use Cases  Weight  Why 
+Display / Serif  Instrument Serif  Hero KPI numbers, section 
+titles, report headers, the logo  400 (regular), 
+400 italic  Creates luxury editorial 
+feel — like the FT or WSJ. 
+Warms the otherwise cold 
+dark UI.  
+UI Sans  Plus Jakarta 
+Sans All navigation, labels, body 
+text, button text, descriptions  300 Light, 400 
+Regular, 500 
+Medium, 600 
+SemiBold, 700 
+Bold Modern geometric sans 
+with personality. Not 
+overused like Inter. Highly 
+legible at small sizes.  
+Data Mono  DM Mono  ALL financial numbers, 
+invoice IDs, dates, 
+currencies, percentages, 
+code, hashes  400, 500  Monospace for numbers 
+ensures decimal 
+alignment. DM Mono is 
+clean and neutral — 
+numbers feel precise.  
+ 
+RULE: Every financial number in the UI must use DM Mono. Every hero metric (revenue, expenses, 
+P&L) must be displayed in Instrument Serif at ≥24px. Navigation and labels use Plus Jakarta Sans. No 
+mixing within a single element.  
+ 
+Global Color Palette  
+Token Name  Hex Value  Usage  Semantic Meaning  
+--ink #0D1117  Primary background, 
+darkest surfaces  The void — deepest dark, establishes 
+premium tone  
+--ink2 #1C2333  Card backgrounds, 
+sidebar  One step lighter — for layering elevation  
+--ink3 #2D3748  Hover states, secondary 
+surfaces  Interactive feedback layer  
+--accent  #16A34A  Primary buttons, active 
+states, key highlights  Growth, positive financial momentum, 
+trust 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 5 of 27 --accent2  #22C55E  Chart lines, sparklines, 
+success indicators  Live / active / positive — brighter version 
+of accent  
+--accentL  #DCFCE7  Badge backgrounds, 
+note fills, light highlights  Same family, for light tint surfaces on 
+dark cards  
+--gold #CA8A04  Reports tab accent, 
+premium features, 
+board -level Quality, executive level, premium reports  
+--red #DC2626  Overdue, danger, error 
+states, destructive 
+buttons  Alert, negative values, loss  
+--amber  #D97706  Warning, review needed, 
+pending states  Caution, needs attention but not critical  
+--blue #2563EB  Invoices tab accent, info 
+states, links  Data entry, information, trusted action  
+--purple  #7C3AED  Tax tab accent, 
+compliance, authority  Official, regulatory, serious  
+--teal #0891B2  Forecast tab accent, 
+future -looking data  Forward -looking, projection, horizon  
+--muted  #64748B  Secondary text, 
+descriptions, 
+placeholders  Subdued — supporting information only  
+--muted2  #94A3B8  Tertiary text, empty 
+states, hints  Very subdued — use sparingly  
+--border  #E2E8F0  All borders in light mode 
+(when toggled)  Structural, non -decorative  
+ 
+Spacing & Grid System  
+Token  Value  Use Case  
+--space -1 4px Icon-to-label gap, tight component internal spacing  
+--space -2 8px Between chips/badges, tight button groups  
+--space -3 12px Within card padding (small), between list items  
+--space -4 16px Standard card padding, between form fields  
+--space -5 20px Section internal padding, table cell padding  
+--space -6 24px Between cards in a grid, section margins  
+--space -8 32px Between major sections on a page  
+--space -12 48px Between page sections in reports  
+Content max -width 1440px  Maximum page content width — no wider  
+Sidebar (icon)  52px Fixed icon navigation width  
+Sidebar (context)  240px  Context panel (company selector, sub -nav) 
+Border radius (sm)  6px Badges, chips, small interactive elements  
+Border radius (md)  10px Cards, inputs, dropdowns  
+Border radius (lg)  14px Modal dialogs, large cards, panels  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 6 of 27  
+Global Layout Architecture  
+The global layout is a three -column structure that remains fixed across all tabs. Only the main 
+content area changes.  
+• Column 1 — Icon Navigation (52px fixed): vertical icon strip. Logo at top. 7 tab icons. Settings and 
+profile at bottom. Tooltip labels appear on hover. No text labels — icons only, keeping the nav 
+ultra-compact.  
+• Column 2 — Context Panel (240px fixed): company name and logo, fiscal year selector, base 
+currency badge, active account type (GST Registered / Non -GST). Below: sub -navigation for the 
+active tab. Collapsible on narrow screens.  
+• Column 3 — Main Content (flexible): changes per tab. Has its own internal header (breadcrumb + 
+primary actions), content area, and optionally a right detail drawer (360px slide -in). 
+• Global Header Bar (48px, spans columns 2+3): search ( ⌘K command palette), notifications bell 
+with badge count, agent status indicators (6 coloured dots), dark/light mode toggle, user avatar 
+menu.  
+ 
+IMPORTANT: The layout never uses horizontal scrolling. All tables are either scrollable within their 
+container or use responsive column hiding. On screens <1280px, column 2 collapses to a hover -
+revealed panel. Mobile (<768px) uses a bottom tab bar replacin g the left sidebar entirely.  
+ 
+Animation & Micro -interaction System  
+Interaction  Animation  Duration  Easing  When to Use  
+Page/tab switch  Fade in + 8px Y translate  200ms  ease -out Switching 
+between the 7 
+tabs 
+Card hover  Border brightens, subtle 
+2px Y lift (box -shadow)  150ms  ease Any clickable 
+card 
+Button press  Scale 0.97, slight darken  100ms  ease -in All button clicks  
+Drawer open  Slide in from right (X: 
+360→0)  240ms  cubic -
+bezier(.25,.8,.25,1)  Invoice detail, 
+agent log, 
+report preview  
+KPI update (new data)  Number count -up 
+animation, brief green 
+pulse 600ms  ease -in-out When 
+WebSocket 
+pushes new 
+financial data  
+Agent status change  Status dot pulse, log line 
+fade-in 300ms  ease Live agent 
+activity feed  
+Success toast  Slide up from bottom, 
+auto-dismiss 3s  200ms / 
+3000ms  ease After invoice 
+upload, report 
+sent, reconcile 
+done 
+Loading skeleton  Shimmer pulse (left -to-
+right gradient sweep)  1200ms 
+loop linear  While data 
+loads — never 
+show empty 
+states  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 7 of 27 Chart render  Lines draw from left to 
+right 500ms  ease -out On first load 
+and after period 
+switch  
+ 
+  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 8 of 27 02  GLOBAL COMPONENTS  
+Reusable design components used across all 7 tabs  
+KPI Metric Card  
+Used in Dashboard and as summary strips in other tabs. Each metric card is a self -contained unit 
+with five layers of information: label, primary value, delta indicator, sparkline, and context tooltip.  
+Element  Specification  Notes  
+Card background  #1C2333 with 1px border 
+rgba(255,255,255,0.06)  On hover: border brightens to 
+rgba(255,255,255,0.12)  
+Label  DM Mono 10px uppercase, letter -spacing 
+0.08em, color #64748B  e.g. "TOTAL REVENUE", "AR 
+OUTSTANDING"  
+Value  Instrument Serif 28px, color #FFFFFF  Always formatted: "$284,750" not 
+"284750"  
+Delta badge  +12.4% → green bg rgba(34,197,94,.15), 
+text #4ade80  -8.2% → red bg 
+rgba(220,38,38,.15), text #f87171  
+Sparkline  SVG 60×24px, single line, no axes, no 
+labels  Color matches delta: green if 
+positive, red if negative  
+Period label  Plus Jakarta Sans 10px, muted2 (#94A3B8)  e.g. "vs last month", "rolling 30d"  
+Card size  Flex: 1/6 of available width, min 140px, 
+height 88px  6 cards in a row on dashboard  
+ 
+Data Table Component  
+The core display pattern for invoices, transactions, ledger entries, and reconciliation matches. 
+Designed to handle 1000+ rows efficiently with virtual scrolling.  
+Element  Specification  
+Table background  #0D1117 — matches page bg for seamless integration  
+Header row  #161B27 background, DM Mono 10px uppercase headers, sticky top  
+Data rows  Alternating: transparent / rgba(255,255,255,.015). Height 44px.  
+Row hover  Background rgba(22,163,74,.06), left border 2px solid #16A34A  
+Row selected  Background rgba(22,163,74,.12), left border 3px solid #22C55E  
+Sort indicator  Arrow icon in header, accent colour when active column  
+Pagination  Bottom: "Showing 1 -50 of 847" | Prev | 1 2 3 ... | Next | Per -page selector  
+Column resizing  Drag column borders. Min column width 80px. Preferences saved to 
+localStorage.  
+Right -click menu  Context menu: View detail / Copy ID / Export row / Flag for review  
+ 
+Status Badge System (Full Specification)  
+Status  Background  Text Color  Dot Color  Used For  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 9 of 27 Reconciled  rgba(34,197,94,.15)  #4ade80  #22C55E  Invoice matched to 
+bank transaction 
+at >90% confidence  
+Processing  rgba(245,158,11,.15)  #fbbf24  #F59E0B  Agent currently 
+working — animated 
+pulse on the dot  
+Needs Review  rgba(37,99,235,.15)  #93c5fd  #3B82F6  60-89% match 
+confidence — human 
+decision required  
+Overdue  rgba(220,38,38,.15)  #f87171  #EF4444  Past due date — 
+flashing dot animation  
+Draft rgba(100,116,139,.15)  #94a3b8  #64748B  Saved but not 
+submitted — tax 
+filings, reports  
+Filed rgba(22,163,74,.1)  #86efac  #16A34A  Tax return submitted 
+to authority  
+Voided  rgba(100,116,139,.08)  #64748B  #475569  Cancelled — 
+strikethrough text in 
+the row  
+AI Extracted  rgba(168,85,247,.12)  #c4b5fd  #A855F7  Invoice data was 
+auto-parsed by 
+Invoice Parser Agent  
+ 
+Search & Filter Bar Component  
+Used on Invoices, Reconciliation, Tax, and Reports tabs. Consistent pattern across all tabs with 
+tab-specific filter options.  
+• Search input: 36px height, DM Mono font for financial IDs, magnifier icon left, ⌘K shortcut opens 
+command palette  
+• Active filters: appear as dismissable chips below the search bar. Each chip: "Date: Jan 2025 ×" in 
+accent colour  
+• Filter button: opens a slide -down panel with all available filters for that tab (dropdowns, date 
+pickers, checkboxes, range sliders)  
+• Save filter preset: star icon saves current filter combination with a name. Presets appear in a 
+dropdown for quick access  
+• Results count: "Showing 47 of 847 invoices" updates live as filters are applied  
+ 
+Notification & Toast System  
+• Toast (success): slides up from bottom -right. Green left border. "Reconciliation complete — 42 
+invoices matched". Auto -dismiss 4s.  
+• Toast (error): Red left border. "Invoice parser failed — Gmail MCP token expired". Persistent until 
+dismissed. Links to Agent Console.  
+• Toast (info): Blue left border. "Tax deadline in 7 days — Q1 GST filing due 14 Jan". Action button: 
+"View Calendar".  
+• Alert banner (urgent): Full -width sticky banner below the global header. Red background. Used 
+only for critical: cash runway <30 days, GST overdue.  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 10 of 27 • Notification bell: dropdown with last 20 notifications. Unread badge count. "Mark all read" button. 
+Click notification → navigates to relevant tab/row.  
+ 
+  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 11 of 27 03  📊 DASHBOARD TAB  
+The financial command centre — full P&L, live KPIs, agent activity, and upcoming deadlines at a single 
+glance.  
+Overview & Design Intent  
+The financial command centre — full P&L, live KPIs, agent activity, and upcoming deadlines at a 
+single glance.  
+ 
+Background & Visual Theme  
+Full-bleed dark carbon background (#0D1117). Subtle 1px green grid lines at 3% opacity in the 
+main chart area create a data -room aesthetic. KPI cards have a very subtle bottom gradient that 
+pulses green when new WebSocket data arrives. The cash flow chart area is the visual hero — it 
+occupies 40% of the viewport height.  
+Think: Bloomberg Terminal if Stripe redesigned it. Dense information, but structured with clear visual 
+hierarchy. The user should be able to read the financial health of their company in under 5 seconds.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Alert Banner (urgent)  Appears ONLY when critical condition: cash runway 
+<30 days / GST overdue / unresolved errors. Full -width 
+sticky band below header, red or amber. Dismissable 
+but re -appears on refresh until resolved.  P0 Critical  
+6-KPI Metric Strip  Six cards in a row: Revenue (MTD) | Expenses (MTD) | 
+Net P&L | AR Outstanding | Cash Runway (months) | 
+GST Liability. Each has sparkline, delta badge, and 
+period label. Click any card → navigates to the relevant 
+tab. P1 High  
+Cash Flow Area Chart  3-line chart: Income (green) / Expenses (red dashed) / 
+Net (white). Period toggle: 7D / 30D / 90D / YTD. Hover 
+tooltip shows exact daily figures for all three lines 
+simultaneously. Zero line highlighted.  P1 High  
+Vendor Spend Donut 
+Chart  Top 8 vendors by spend this month. Hover segment → 
+shows vendor name and % of total spend. Click → 
+jumps to Invoices filtered by that vendor.  P2 Medium  
+Live Agent Activity 
+Feed Right -side panel (240px wide). Streams last 20 agent 
+events via WebSocket: [timestamp] [agent icon] [action 
+description]. Auto -scrolling. Toggle: pause/resume. 
+Shows agent confidence scores.  P1 High  
+Upcoming Deadlines 
+Widget  Below agent feed: next 5 financial events in 
+chronological order. Each shows: event type icon, 
+description, date, urgency chip (Today/This Week/This 
+Month). Click → Calendar MCP event.  P2 Medium  
+Quick Action Buttons  Primary actions for the most common workflows. Placed 
+in the header of the main content area. Always visible.  P1 High  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 12 of 27 Period/Currency 
+Selector  Top-right of main area: FY selector (FY2024/FY2025), 
+month picker, currency display (SGD/USD/IDR). 
+Changes all KPIs and charts to match selection.  P2 Medium  
+ 
+Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+↑ Upload Invoice  Primary 
+(green fill)  Opens invoice upload modal / 
+drag-drop zone  Header top -right 
+⟳ Run 
+Reconciliation  Secondary 
+(gray)  Triggers reconciliation agent for all 
+unmatched invoices  Header top -right 
+⬇ Export Summary  Ghost (border 
+only) Downloads current view as PDF 
+or CSV  Header top -right 
++ Add Manual Entry  Secondary  Opens manual transaction entry 
+form Dropdown under primary 
+button  
+ 
+Component Specifications  
+Cash Flow Chart (Recharts AreaChart)  
+Three datasets: income (fill: rgba(22,163,74,.2), stroke: #22C55E), expenses (fill: 
+rgba(220,38,38,.1), stroke: #ef4444 dashed), net (fill: none, stroke: #fff). CustomTooltip component 
+shows all three values formatted with DM Mono. Responsive container — fills 100% of its parent 
+width. No visible axes on mobile.  
+Agent Activity Feed  
+WebSocket connection to /ws/agent -events. Each event: { timestamp, agent_name, action, 
+tool_called, result, confidence }. Rendered as a scrolling list of Event components. Color coding: 
+green for success, amber for tool calls, red for errors. Pause/resume toggle stores events in a 
+buffer when paused.  
+KPI Cards  
+Six MetricCard components in a CSS grid: grid -template -columns: repeat(6, 1fr). Each card fetches 
+its value from a shared DashboardContext that subscribes to Supabase Realtime. On value 
+update: number animates using a count -up library over 600ms.  
+ 
+UX Principles for this Tab  
+• The user should never need to click more than once to understand the current financial health of 
+the company.  
+• Data freshness indicators: each KPI shows "Updated 2 min ago" in muted text. If data is >15 
+minutes old, show a stale indicator.  
+• Empty states: if company is new, show a welcome flow with step -by-step setup guide instead of 
+empty charts.  
+• Colour accessibility: all status colours pass WCAG AA contrast ratio on the dark background.  
+• Keyboard navigation: Tab key cycles through KPI cards, then chart period buttons, then action 
+buttons.  
+ 
+ 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 13 of 27 04  🧾 INVOICES TAB  
+Full invoice lifecycle — upload, parse, view extracted data, track status, manage, and override AI 
+extractions.  
+Overview & Design Intent  
+Full invoice lifecycle — upload, parse, view extracted data, track status, manage, and override AI 
+extractions.  
+ 
+Background & Visual Theme  
+Dark surface with a subtle blue -tinted top gradient (#0D1117 → #0A1020). The drag -and-drop 
+upload zone is the hero element at the top — it glows with a pulsing blue border on hover and has 
+a dashed border. Invoice rows have a thin left border that shows st atus colour (green=matched, 
+amber=pending, blue=review, red=overdue). The detail drawer slides from the right and shows the 
+invoice PDF alongside extracted data.  
+Command -line precision meets spreadsheet usability. Every invoice detail must be accessible in 
+exactly 2 clicks. The PDF preview alongside extraction results builds trust in the AI — users can verify 
+every field.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Drag & Drop Upload 
+Zone Full-width hero zone at top of page. Accepts PDF, 
+JPEG, PNG, HEIC. Max 50MB per file. Shows upload 
+progress bar. On drop: blue glow animation. Shows file 
+preview thumbnail. Triggers Invoice Parser Agent 
+immediately on successful upload. Shows "Parsing..." 
+status with spinner.  P0 Critical  
+Batch Upload  Multiple files can be dropped simultaneously. Shows a 
+queue: "3 files uploading — 1 complete, 2 processing". 
+Each file has individual progress. Cancel individual files 
+from queue.  P1 High  
+Smart Search  Full-text search across: vendor name, invoice number, 
+amount (e.g. "2847"), currency, notes. Search is instant 
+(debounced 200ms). Highlights matching text in results.  P1 High  
+Advanced Filter Panel  Slide -down panel with: Date range picker (issue date / 
+due date), Status multi -select, Vendor dropdown (auto -
+populated from Supabase), Currency 
+(SGD/IDR/THB/PHP/MYR), Amount range slider, Tax 
+rate filter. Applied filters shown as dismissable chips.  P1 High  
+Invoice Table  Columns (sortable): Invoice # (DM Mono) | Vendor | 
+Issue Date | Due Date | Amount (DM Mono, right -
+aligned) | Currency | Tax | Status badge | Confidence % 
+| Actions. Row click = open detail drawer. Checkbox 
+column for batch select.  P0 Critical  
+Detail Drawer  360px slide -in from right. Two -column layout: left = PDF 
+preview (with page navigation for multi -page), right = 
+extracted fields in editable form. Fields: Vendor, Invoice 
+#, Issue Date, Due Date, Subtotal, Tax Amount, Total, P0 Critical  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 14 of 27 Currency, Notes. Save changes button triggers re -
+processing.  
+Manual Override  Any extracted field shows an edit pencil on hover. Click 
+→ inline text input with save/cancel. All changes logged 
+to agent_audit_log with "user_override" action. Override 
+fields shown with a small edit icon permanently.  P1 High  
+Batch Actions  Multi -select with checkbox in each row. When 2+ 
+selected: action bar appears at bottom: "X invoices 
+selected — Reconcile / Export / Void / Re -parse". 
+Confirmation modal shows impact before executing.  P2 Medium  
+Duplicate Detection  When two invoices have same vendor + amount + 
+similar date, show a warning badge. Click warning → 
+side-by-side comparison view. User can mark as unique 
+or merge.  P2 Medium  
+Email -to-Invoice 
+Tracking  For Gmail -sourced invoices: show email thread icon. 
+Click → opens Gmail thread in a mini -viewer. Shows 
+original email context alongside extracted invoice.  P3 Low  
+ 
+Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+↑ Upload Invoice  Primary (blue 
+fill for this tab)  Opens upload modal + drag zone 
+focus Header top -right 
++ Add Manually  Secondary  Opens manual invoice entry form  Header top -right 
+⬇ Export CSV  Ghost  Exports filtered invoices with all 
+columns  Header top -right 
+⬇ Export PDF  Ghost  Exports invoice register as 
+formatted PDF  Dropdown  
+⚙ Columns  Icon button  Opens column visibility settings  Table header right  
+Re-parse Selected  Batch action 
+bar Re-runs Invoice Parser Agent on 
+selected  Bottom action bar  
+ 
+Component Specifications  
+Upload Zone (Dropzone component)  
+React -Dropzone with custom overlay. onDrop callback: upload to Cloud Storage via signed URL, 
+then POST to /api/invoices with file_url. Show UploadProgress component per file. Progress 
+tracked via Cloud Storage upload session ID.  
+Invoice Table (TanStack Table)  
+Virtual scrolling for performance (react -virtual). Row actions via DropdownMenu component. 
+Column definitions include custom cell renderers: AmountCell (DM Mono, right -aligned, formatted), 
+StatusBadge, ConfidenceBar (mini progress bar 0 -100).  
+Detail Drawer (Sheet component)  
+Shadcn Sheet component. PDF preview via react -pdf. Extracted fields in a form using react -hook -
+form + Zod validation. Auto -save on blur. Mutation via Supabase client. Realtime subscription on 
+invoice ID shows when agent updates fields.  
+ 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 15 of 27 UX Principles for this Tab  
+• Trust through transparency: always show the AI confidence score so users know when to verify.  
+• Never delete — only void. Voided invoices remain visible with strikethrough styling for audit trail.  
+• Keyboard shortcuts: U = upload, F = focus search, R = reconcile selected, Esc = close drawer.  
+• Loading states: skeleton rows appear immediately while data loads — never an empty table flash.  
+• Scroll position is preserved when returning from the detail drawer.  
+ 
+ 
+05  🔄 RECONCILIATION TAB  
+Match invoices to bank transactions — auto-reconciliation with confidence scoring, manual matching, 
+and variance explanation.  
+Overview & Design Intent  
+Match invoices to bank transactions — auto-reconciliation with confidence scoring, manual 
+matching, and variance explanation.  
+ 
+Background & Visual Theme  
+Split-panel layout with two equally -sized panels. Left panel: unmatched invoices (dark surface 
+#0D1117). Right panel: bank transactions (slightly warmer dark #110D00). When a match is made, 
+a glowing amber line connects the two items visually. Matched item s move to a "Reconciled" 
+section below the split panels, collapsed by default. The top summary strip uses amber accents 
+throughout.  
+Surgical precision tool aesthetic — like a trade blotter on a trading desk. Two columns, clear 
+connection between matched items, colour -coded confidence scores.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Reconciliation 
+Summary Strip  Full-width banner at top with 5 metrics: Total Invoices | 
+Matched | Unmatched | Needs Review | Total 
+Unmatched Value (SGD). All metrics update in real -time 
+as reconciliation runs. Background: very subtle amber 
+gradient.  P0 Critical  
+Auto-Reconcile Button  Full-width prominent button below summary. On click: 
+triggers Reconciliation Agent for all unmatched items. 
+Shows a progress bar: "Reconciling 42 invoices... 18/42 
+complete". When done: shows breakdown — "31 auto -
+matched, 8 need review, 3 unmatched". Confe tti 
+animation on 100% match rate.  P0 Critical  
+Split Panel View  Left: Invoice list (ID, vendor, amount, date). Right: Bank 
+transaction list (date, description, debit/credit, balance). 
+Scroll both panels independently. Drag an invoice to a 
+transaction to manually match. Or click "Match" button 
+on invoice, then click the  matching transaction.  P0 Critical  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 16 of 27 Confidence Score 
+Heatmap  Each matched pair shows a confidence score (0 -100). 
+Colour: 90 -100 = green, 70 -89 = amber, 50 -69 = 
+orange, <50 = red. Score is a pill badge. Click the score 
+→ popover shows the top 3 alternative matches with 
+their scores.  P1 High  
+Manual Match Mode  Toggle "Manual Mode" — left panel items become drag 
+handles. Drag an invoice to any transaction on the right. 
+On drop: match confirmation modal with reason field 
+(required for audit trail). Reason options: "Exact match", 
+"Partial payment", "Currency conver sion", "Different 
+date", "Other".  P1 High  
+Bank Statement 
+Import  Top-right: "Import Statement" button. Accepts CSV (with 
+column mapping wizard), OFX, QFX formats. Supports: 
+DBS, OCBC, UOB, BCA, Mandiri, SCB Thailand, BPI 
+Philippines, Maybank Malaysia. Shows imported 
+transactions in right panel immediately.  P1 High  
+Variance Alerts  When matched amount differs by >SGD 1 or >0.5%, 
+flag with an orange badge: "Variance: SGD 14.50". On 
+click: popover with explanation options (Exchange rate 
+fluctuation / Partial payment / Bank fee / Rounding). 
+Must be explained before final confirmation.  P1 High  
+Reconciliation History  Below the split panel: collapsible accordion of 
+reconciled pairs by date. Each pair shows: invoice ID ↔ 
+transaction ID, match date, confidence, who reconciled 
+(Agent/User name), any notes.  P2 Medium  
+Bulk Unreconcile  On reconciled items: right -click → "Unreconcile". 
+Requires reason. Logged to audit trail. Returns both 
+items to unmatched pools.  P2 Medium  
+ 
+Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+⚡ Auto-Reconcile 
+All Primary 
+(amber for 
+this tab)  Triggers Reconciliation Agent — 
+all unmatched  Top of page, prominent  
+📥 Import Bank 
+Statement  Secondary  Opens import modal with format 
+selector  Header right  
+⬇ Export Report  Ghost  Downloads reconciliation report as 
+PDF or CSV  Header right  
+↩ Undo Last Match  Ghost (amber 
+border)  Reverses last manual match with 
+reason log  Header right  
+✓ Confirm All Auto  Success 
+button  Confirms all auto -matched pairs in 
+bulk Below auto -reconcile 
+progress  
+ 
+Component Specifications  
+Split Panel (ResizablePanelGroup)  
+Two ResizablePanel components from shadcn. Each panel has its own virtualized list (react -
+virtual). Drag -to-match implemented with @dnd -kit/core. On drag start: right panel items highlight 
+matching candidates based on amount similarity.  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 17 of 27 Confidence Score Display  
+CircularProgress component (SVG -based). Colour computed via a getConfidenceColor(score) 
+utility: <50 → red, 50 -70 → amber, 70 -90 → orange, >90 → green. Popover shows 
+AlternativeMatches component with ranked list.  
+Bank Statement Import Wizard  
+Multi -step Dialog: Step 1 = file upload, Step 2 = column mapping (drag columns to assign: 
+date/description/debit/credit/balance), Step 3 = preview first 10 rows, Step 4 = confirm import 
+count. POST to /api/bank -statements with parsed data.  
+ 
+UX Principles for this Tab  
+• Speed matters: most common action is approving auto -matches. One -click approval must be 
+frictionless.  
+• Every match (auto or manual) requires a reason code for compliance — but make the default 
+reason options quick to select.  
+• Show the running reconciliation balance: "Reconciled value: SGD 284,200 of SGD 312,450 total" 
+so users know progress.  
+• Import wizard must clearly show a preview before committing — financial data imports are 
+irreversible.  
+ 
+ 
+06  🧾 TAX TAB  
+SE Asia tax compliance — GST, VAT, PPN across all jurisdictions. Filing calendar, liability summary, 
+and one -click draft generation.  
+Overview & Design Intent  
+SE Asia tax compliance — GST, VAT, PPN across all jurisdictions. Filing calendar, liability 
+summary, and one -click draft generation.  
+ 
+Background & Visual Theme  
+Dark background with a very subtle purple tint (#0E0A1E — barely perceptible but adds gravitas). 
+Filing deadline cards use an urgency gradient system: ≥30 days = green card, 15 -29 days = amber 
+card, 8 -14 days = orange card, ≤7 days = red card with a pulsin g border. The jurisdiction selector 
+uses flag emoji + tax name tabs across the top.  
+Serious, government -grade compliance tool aesthetic. Purple accents signal authority, accuracy, and 
+regulatory seriousness. Every number must be verifiable — show all calculation inputs.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Jurisdiction Tab Bar  Tabs across the top: 🇸🇬 GST (9%) | 🇮🇩 PPN (11%) | 🇹🇭 
+VAT (7%) | 🇵🇭 VAT (12%) | 🇲🇾 SST (8%). Each tab 
+shows the current rate badge. Active tab = purple P0 Critical  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 18 of 27 underline. Each jurisdiction shows its own independent 
+liability, deadlines, and rules. Company can have 
+multiple active jurisdictions.  
+Tax Liability Summary 
+Cards  For active jurisdiction: three cards in a row: Input Tax 
+(what you can claim back) | Output Tax (what you 
+collected) | Net Tax Payable (output minus input). Each 
+card shows current quarter vs previous quarter delta. 
+Click any card → jumps to Tax Register f iltered by that 
+tax type.  P0 Critical  
+Filing Deadline 
+Calendar  Full calendar view (month grid). Tax -related events 
+shown as coloured blocks: filing deadlines (red/amber 
+based on urgency), payment due dates (amber), 
+estimated dates (dashed border). Click any event → 
+filing details drawer.  P1 High  
+Filing Deadline Cards  Below calendar: card list of next 5 upcoming filings. 
+Each card: jurisdiction flag, filing type (GST F5 / F7 / 
+Annual), due date, estimated amount, status (Not 
+Started / Draft / Submitted / Filed). Urgency gradient 
+background.  P0 Critical  
+Tax Register Table  Every taxable transaction: Invoice # | Vendor | Date | 
+Net Amount | Tax Rate | Tax Amount | Input/Output | 
+Status. Filterable by: period (quarter/month), tax type, 
+vendor, rate. Sortable. Export for accountant.  P1 High  
+Reminder 
+Configuration  Per-jurisdiction reminder settings: Toggle: Calendar 
+event only / Email only / Both. Days before deadline: 
+chips for 14, 7, 3, 1 day. Recipient email list (can add 
+multiple). Preview shows sample Calendar event and 
+email.  P1 High  
+GST F5 Draft 
+Generator  Singapore -specific: "Generate F5 Draft" button. Pre -
+populates: Box 1 (total value of standard -rated 
+supplies), Box 5 (total value of taxable purchases), Box 
+6 (output tax due), Box 7 (input tax and refunds 
+claimed), Box 9 (net GST payable). Download as PDF . 
+Status: Draft / Submitted / Filed.  P1 High  
+Threshold Monitor  Warning card if company is approaching VAT 
+registration threshold in a jurisdiction. Example: "You 
+are at 78% of Indonesia's PKP registration threshold of 
+IDR 4.8B. Expected to cross in ~3 months based on 
+current revenue trend." Shows a progress bar.  P2 Medium  
+ 
+Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+🔔 Set Filing 
+Reminders  Secondary 
+(purple for this 
+tab) Opens reminder config panel for 
+active jurisdiction  Header right  
+📄 Generate Draft 
+Filing Primary 
+(purple)  Triggers Tax Compliance Agent to 
+pre-fill return  Per-deadline card  
+⬇ Export Tax 
+Register  Ghost  Downloads full tax register as 
+CSV Header right  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 19 of 27 + Add Manual 
+Adjustment  Secondary  Opens manual tax adjustment 
+entry Header right  
+✓ Mark as 
+Submitted  Success 
+badge action  Updates filing status  Per-filing card  
+ 
+Component Specifications  
+Jurisdiction Selector (Tabs component)  
+Shadcn Tabs. Each tab panel fetches jurisdiction -specific data from Supabase filtered by 
+company_id + jurisdiction. URL includes jurisdiction param: /tax?j=SG. Switching tabs updates 
+URL and triggers data fetch.  
+Filing Deadline Cards  
+Each card fetches from tax_records table. Urgency computed client -side: 
+daysUntil(filing_deadline). CSS classes applied based on urgency tier. Pulsing border animation 
+(CSS @keyframes) for ≤7 days.  
+F5 Draft Generator  
+POST to /api/tax/generate -draft with { company_id, jurisdiction, period }. Triggers Tax Compliance 
+Agent via Pub/Sub. Agent writes draft to tax_records table. Supabase Realtime subscription shows 
+draft appearing in the UI in real -time.  
+ 
+UX Principles for this Tab  
+• Tax is stressful — the UI must feel reassuring and authoritative, not alarming. Use amber for 
+"upcoming" not red unless truly overdue.  
+• Every tax calculation must show its workings. Never show just the final number — always show 
+the formula: Output Tax (SGD 18,420) = Sum of all standard -rated sales × 9%.  
+• Filing deadlines must be visible from any tab — duplicate key dates in the global notification 
+system.  
+• Historical accuracy: once a period is closed, data becomes read -only. Show a "Closed" badge on 
+past periods.  
+ 
+ 
+07  📈 FORECAST TAB  
+90-day cash flow forecast — 3 scenarios, AR aging analysis, AP payment schedule, and interactive 
+what -if simulator.  
+Overview & Design Intent  
+90-day cash flow forecast — 3 scenarios, AR aging analysis, AP payment schedule, and 
+interactive what -if simulator.  
+ 
+Background & Visual Theme  
+Full-bleed dark chart backgrounds. The forecast chart takes 50% of viewport height — it is the hero 
+of this tab. The base -case line has a subtle teal glow (box -shadow + blur on SVG). Confidence 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 20 of 27 band between conservative and optimistic scenarios is filled with a low -opacity teal. The Cash 
+Runway gauge is a circular gauge in the top -right that dominates the above -the-fold view.  
+Quant trading desk aesthetic — data density, precision lines, confidence intervals. The What -If 
+Simulator panel makes this interactive and demo -friendly — sliders that update the chart in real time.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Cash Runway Gauge  Large circular gauge (200px diameter) prominently 
+placed at top -right. Shows months of runway. Fills from 
+0 (empty) to 12 (full). Colour zones: 0 -3 months = red, 
+3-6 = amber, 6+ = green. Animated fill on load. Number 
+inside uses Instrument Serif at 36px. B elow gauge: 
+"Based on base case scenario".  P0 Critical  
+3-Scenario Area Chart  Recharts AreaChart with 3 lines. Conservative (red 
+dashed), Base (teal solid, glowing), Optimistic (green 
+dashed). Area fill between conservative and optimistic = 
+uncertainty band (teal at 8% opacity). X -axis: dates 
+(next 90 days). Y -axis: SGD balance. Zer o line = thick 
+white 2px horizontal rule. Hover tooltip: all 3 scenario 
+values at that date.  P0 Critical  
+Scenario Toggle 
+Buttons  Three pill buttons floating above the chart: 
+[Conservative] [Base] [Optimistic]. Toggle each to 
+show/hide that scenario line. All visible by default. The 
+currently selected "primary" scenario drives the runway 
+gauge.  P1 High  
+AR Aging Table  Below chart, left side. Columns: Aging Bucket | # 
+Invoices | Total Value | % of AR. Buckets: Current 
+(≤30d) | 31 -60d | 61 -90d | 90d+. Each row has a mini 
+horizontal bar showing proportion. Click bucket → 
+Invoice table filtered to that aging bucket.  P1 High  
+AP Payment Schedule  Below chart, right side. Timeline of upcoming payables: 
+due date | vendor | amount | days until due. Sorted by 
+date. Colour -coded: this week (red), next week (amber), 
+this month (teal), next month (gray). Total per period at 
+the bottom.  P1 High  
+What -If Simulator 
+Panel  Collapsible right -side panel (300px). Sliders with real -
+time chart update: Collection Rate % (what % of AR is 
+collected on time) | Average Payment Days (for 
+payables) | Monthly Revenue Growth % | One -time 
+Cash Injection (SGD input). As sliders move, chart 
+redraws smoothly. Shows: "This change extends your 
+runway by +14 days."  P1 High  
+Forecast Assumptions 
+Panel  Below simulator: shows current model assumptions that 
+the Forecast Agent used. Editable: Fixed Monthly Costs 
+| Expected New Revenue | Tax Payment Dates. On 
+save: triggers Forecast Agent re -run via Pub/Sub.  P2 Medium  
+Investor Summary 
+Export  "Email to Investors" button: generates a clean 1 -page 
+PDF with: company name, current date, runway gauge, 
+base -case chart, 3 key metrics. Sends via Gmail MCP 
+to configured investor email list.  P2 Medium  
+ 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 21 of 27 Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+▶ Re-run Forecast  Primary (teal)  Triggers Forecast Agent with 
+current assumptions  Header right  
+⬇ Export CSV  Ghost  Downloads 90 -day projection as 
+CSV Header right  
+📧 Email to 
+Investors  Secondary  Generates and emails 1 -page 
+forecast summary  Header right  
+🧪 Open Simulator  Toggle button  Reveals/hides the What -If 
+Simulator panel  Inside chart area  
+Scenario toggles (3)  Pill buttons  Show/hide each forecast scenario 
+line Floating above chart  
+ 
+Component Specifications  
+Forecast Chart (Recharts)  
+ComposedChart with multiple Area and Line components. ReferenceArea for uncertainty band. 
+ReferenceLine at y=0 (zero balance). Custom ActiveDot with glow effect (SVG filter). Chart data 
+updated via SWR with revalidate on focus. Smooth 400ms transition when  data changes.  
+Runway Gauge (Custom SVG)  
+SVG arc drawn with stroke -dasharray technique. Animated with requestAnimationFrame counter. 
+Colour transitions using HSL interpolation between red → amber → green. Value formatted as "8.2 
+mo" using DM Mono. Pulse animation when runway drops below 3 months.  
+What -If Simulator  
+Zustand store holds simulator state. Each slider onChange: debounced 100ms, calls a pure 
+function simulateForecast(baseData, assumptions) that recomputes projections client -side (no API 
+call). Chart data source switches to simulated data while simulator is  open.  
+ 
+UX Principles for this Tab  
+• The forecast is inherently uncertain — communicate this visually with the confidence band and 
+explicitly in labels: "Based on historical payment patterns".  
+• Runway number must be visible from every tab — put it in the global header as a small badge.  
+• Simulator must update the chart within 100ms of slider movement to feel responsive and magical.  
+• Show the delta: not just "8.2 months runway" but "8.2 months (+1.4 vs last month)".  
+ 
+ 
+08  📄 REPORTS TAB  
+Auto-generated P&L, board summaries, and on -demand financial reports — generated, previewed, and 
+delivered in 30 seconds.  
+Overview & Design Intent  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 22 of 27 Auto-generated P&L, board summaries, and on -demand financial reports — generated, previewed, 
+and delivered in 30 seconds.  
+ 
+Background & Visual Theme  
+Report library aesthetic — dark background with warm gold accents. Report cards look like 
+document thumbnails with a subtle drop -shadow suggesting physical paper. The card grid has 
+staggered opacity on load (each card fades in 50ms apart). The report gener ator form uses a clean 
+step-by-step wizard with gold accent on the active step.  
+Executive document suite — premium editorial feel. Gold accents suggest high -value deliverables, 
+board -room quality, and trusted financial intelligence. Reports are a product in themselves.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Report Library Grid  2-3 column masonry grid of past reports. Each card: 
+thumbnail preview (first page as image), report type 
+badge (gold pill), period label (e.g. "January 2025"), 
+recipient count, download count, date generated. Card 
+hover: show download and re -send buttons. Click: 
+opens full preview.  P0 Critical  
+Instant Report 
+Generator  Wizard with 3 steps: (1) Select type — P&L / Board 
+Pack / GST Summary / Investor Update / Custom. (2) 
+Configure — date range, currency, include/exclude 
+sections, recipient list. (3) Generate — shows progress 
+("Generating... Report Agent is working"). Done:  
+preview appears below.  P0 Critical  
+5 Report Templates  Template cards with preview thumbnails: Monthly P&L 
+Statement (income statement format), Quarterly Board 
+Pack (exec summary + charts + KPIs), GST Return 
+Summary (tax register formatted for accountant), 
+Investor Update (runway gauge + growth metrics), 
+Annua l Accounts Summary. Each template shows what 
+sections it includes.  P1 High  
+In-app Report Preview  Full-width report preview in an iframe -like container. 
+Looks like a real document with letterhead, page 
+numbers, formatted tables. Edit mode: click any 
+paragraph to edit the narrative text inline. Claude -
+generated sections are marked with a small AI badge.  
+Approve and send button at top of preview.  P0 Critical  
+Scheduled Report 
+Config  Recurring reports settings: Daily digest email / Weekly 
+P&L (Monday 8AM) / Monthly board pack (1st of month) 
+/ Quarterly tax summary. For each: recipients list, 
+format (PDF/HTML/CSV), timezone, language 
+(EN/ID/TH). Toggle on/off per schedule.  P1 High  
+Multi -format Export  Per report: Download PDF (formatted, print -ready, with 
+FinancePilot watermark option), Download CSV (raw 
+data for accountant / ERP), Download JSON (for 
+programmatic consumption), Copy link (shareable read -
+only link with expiry).  P1 High  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 23 of 27 Custom Report 
+Builder  Advanced: drag -and-drop section builder. Available 
+sections: revenue chart, expense breakdown, invoice 
+summary, tax liability, cash flow, AR aging, vendor 
+analysis, custom text block. Reorder sections. Preview 
+updates live. Save as new template.  P3 Low  
+ 
+Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+⚡ Generate Now  Primary (gold 
+fill) Opens report generator wizard  Header top -right 
+📅 Schedule 
+Report  Secondary  Opens recurring schedule config  Header top -right 
+⬇ Download PDF  Ghost  Downloads selected report as 
+PDF Per-report card + preview 
+header  
+📧 Send via Email  Secondary  Sends selected report via Gmail 
+MCP Per-report card  
++ New Template  Ghost (gold 
+border)  Opens custom report template 
+builder  Template section  
+✏ Edit & Re -send Secondary  Opens report in edit mode  Per-report card action menu  
+ 
+Component Specifications  
+Report Library Grid (Masonry)  
+CSS columns: 2 for standard, 3 for wide screens. Each ReportCard component: thumbnail 
+generated server -side from report HTML using Puppeteer. Report type badges use the gold colour 
+system. Hover state reveals action buttons (framer -motion whileHover).  
+Report Preview (iframe)  
+Server -rendered HTML report injected into a sandboxed div. Edit mode uses contentEditable on 
+paragraph elements with a MutationObserver to track changes. Changes sync to a draft state. On 
+"Approve & Send": PUT /api/reports/{id} with edited HTML, then trigg ers email via Gmail MCP.  
+Report Generator Wizard (Multi -step)  
+Shadcn Dialog with StepIndicator component showing current step. State managed with 
+useReducer. Step 1 -2 are instant (UI only). Step 3: POST to /api/reports/generate → SSE stream 
+for progress updates → report_id when complete → fetch preview.  
+ 
+UX Principles for this Tab  
+• Reports are delivered to executives — the quality bar must be higher than everything else in the 
+app. They reflect the company's professionalism.  
+• Speed is the wow factor: generate and email a formatted board report in under 30 seconds. Make 
+the countdown visible.  
+• Always show who will receive the report before sending — list recipient names, never just email 
+addresses.  
+• Archive all sent reports forever — financial records must never be deleted.  
+ 
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 24 of 27  
+09  🤖 AGENT CONSOLE TAB  
+Real-time view of all 6 AI agents — status, live event stream, tool call inspector, performance metrics, 
+and agent controls.  
+Overview & Design Intent  
+Real-time view of all 6 AI agents — status, live event stream, tool call inspector, performance 
+metrics, and agent controls.  
+ 
+Background & Visual Theme  
+Full terminal aesthetic — dark background (#0A0F0A with faint green tint), DM Mono dominates, 
+event log lines stream in like a live server terminal. Agent status grid uses pulsing dot animations. 
+The overall feel is a DevOps monitoring console — intended f or the technical demo moment where 
+you show judges exactly how the multi -agent system works.  
+This tab is the technical showpiece — it proves the multi -agent architecture is real, not a facade. Every 
+agent action is observable, every MCP tool call is inspectable.  
+ 
+Features & Components (Detailed)  
+Feature  Description  UX Priority  
+Agent Status Grid  6 cards in a 3×2 grid. Each card: agent name (Plus 
+Jakarta Sans 12px bold), status dot (pulsing green=idle, 
+amber=processing, red=error), last task description (DM 
+Mono 10px, truncated), average latency (ms), tasks 
+completed today, error rate (%). Click ca rd → filters the 
+event stream to that agent only.  P0 Critical  
+Live Event Stream  Full-height scrolling log. Each line: [HH:MM:SS] 
+[AGENT_NAME] [ACTION] [TOOL_CALLED?] 
+[RESULT] [CONFIDENCE%?]. Colour coding: green = 
+success/idle, amber = tool call in progress, red = error, 
+teal = tool call result, white = info. Auto -scroll to bottom 
+toggle (pause on scroll -up). Max 500 lines in DOM 
+(virtualized).  P0 Critical  
+Tool Call Inspector  Click any event line → expands below it (accordion) 
+showing full details: Claude's input prompt (truncated to 
+200 chars + "expand"), tool name, tool input params 
+(formatted JSON), tool output (formatted JSON), token 
+count, latency ms, session_id. Collapsib le code blocks.  P1 High  
+Performance Metrics 
+Panel  Right side: 3 mini charts: (1) Per -agent latency 
+histogram for last 100 calls, (2) Task throughput bar 
+chart (tasks per hour, last 24h), (3) Token usage 
+stacked bar by agent. All update every 60 seconds. 
+Powered by Supabase query on agent_audit_log table.  P1 High  
+Audit Log Search  Full-text search with: agent filter (multi -select), date 
+range, MCP tool filter, success/error filter, min/max 
+latency filter, session_id search. Results update live. P1 High  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 25 of 27 Click result → opens Tool Call Inspector for that event. 
+Export button → downloads filtered log as CSV.  
+Agent Controls  Per-agent action menu ( ⋮ button on status card): Pause 
+Agent / Resume Agent / Clear Working Memory / Set 
+Rate Limit (max tasks/min slider) / Inject Test Task (for 
+demo). Global buttons: Pause All / Resume All. 
+Confirmation required for any destructive acti on. P2 Medium  
+Session Replay  Select a session_id from the audit log → play back all 
+agent events in sequence with configurable speed (1× / 
+2× / 5×). Useful for debugging failed workflows. Each 
+event highlights as it replays.  P3 Low  
+ 
+Action Buttons on this Tab  
+Button Label  Type  Triggers  Placement  
+⏸ Pause All Agents  Danger (red 
+outline)  Pauses all Pub/Sub message 
+consumption  Header top -right 
+▶ Resume All  Primary 
+(green)  Resumes all agents  Header top -right — visible 
+only when paused  
+🗑 Clear Memory  Secondary  Clears Redis working memory for 
+all agents  Header, confirm modal 
+required  
+⬇ Export Audit Log  Ghost  Downloads filtered log as CSV  Header right  
+↻ Refresh  Icon button  Force -fetches latest data  Header right  
+Inject Test Task  Per-agent 
+action  Opens task injection form for 
+demo  Per-agent card action menu  
+ 
+Component Specifications  
+Live Event Stream (Virtualized)  
+react -virtual for list virtualization — only renders visible rows. WebSocket from /ws/agent -events. 
+On new event: prepend to array, limit to 500. Each EventRow component conditionally renders 
+expanded ToolCallInspector. ANSI -style colour classes applied vi a utility function 
+getEventColor(event.type).  
+Agent Status Cards (Real -time)  
+Supabase Realtime channel: agent_audit_log filtered by created_at > NOW() - interval '1 hour'. On 
+INSERT: update the matching agent card stats. Status computed from last event timestamp: if last 
+event < 30s ago AND type='started' → Processing; else Idle.  
+Performance Charts (Recharts)  
+Three lightweight chart components. Data fetched every 60s via SWR from /api/agents/metrics. 
+BarChart for throughput, custom histogram bins for latency distribution, StackedBarChart for token 
+usage by agent with DM Mono axis labels.  
+ 
+UX Principles for this Tab  
+• This tab exists to prove the system is real — every agent action must be observable. No black 
+boxes.  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 26 of 27 • The live stream is the most demo -worthy element. Ensure WebSocket connection is resilient — 
+auto-reconnects with exponential backoff.  
+• Error events must be immediately obvious — red colouring, larger font weight, visible in periphery.  
+• During the hackathon demo, inject a test task while judges are watching — show the full pipeline 
+in 10 seconds.  
+ 
+ 
+  
+FinancePilot — Frontend Design System & UX Specification     |    Google Gen Academy APAC 2025  
+Page 27 of 27 10  RESPONSIVE DESIGN & ACCESSIBILITY  
+Mobile layout, breakpoints, and WCAG compliance  
+Breakpoint System  
+Breakpoint  Width  Layout Changes  
+Mobile  < 768px  Bottom tab bar replaces left sidebar. Single -column layout. Tables 
+become card lists. Charts reduce to 200px height. Upload zone 
+always visible.  
+Tablet  768px – 1024px  Context panel (column 2) collapses to hover -reveal. Main content 
+full width. Two -column grids become single -column. Tables show 
+4 columns max.  
+Desktop  1024px – 1440px  Full 3 -column layout. All features visible. Default view.  
+Wide > 1440px  Max content width capped at 1440px. Side margins increase. 
+Charts scale within their containers.  
+ 
+Accessibility Requirements (WCAG 2.1 AA)  
+• Colour contrast: all text meets 4.5:1 contrast ratio on dark backgrounds. Status badge text meets 
+3:1 minimum.  
+• Keyboard navigation: all interactive elements reachable via Tab key. Focus ring: 2px solid 
+#22C55E offset 2px.  
+• Screen reader: all charts have aria -label describing the data. Tables have proper caption and th 
+scope attributes.  
+• Reduced motion: all animations wrapped in @media (prefers -reduced -motion: no -preference). 
+Respect OS setting.  
+• Number formatting: all monetary values include currency symbol and are formatted with 
+thousands separators.  
+• Error messages: always describe what went wrong AND what action to take. Never just "Error 
+500".  
+ 
+FinancePilot Frontend Design System — Google Gen Academy APAC Cohort 1  
+Luxury Minimal Dark · Instrument Serif · DM Mono · Plus Jakarta Sans · Next.js 14 + TailwindCSS + shadcn/ui  

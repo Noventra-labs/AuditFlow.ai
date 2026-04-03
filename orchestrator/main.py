@@ -285,15 +285,23 @@ async def get_ledger(
     user: dict = Depends(verify_token_optional),
 ):
     """Get ledger entries with filtering."""
-    query = supabase.table("ledger_entries").select("*").eq("company_id", company_id).order("date", desc=True).limit(limit)
+    query = supabase.table("bank_transactions").select("*").eq("company_id", company_id).order("date", desc=True).limit(limit)
     if date_from:
         query = query.gte("date", date_from)
     if date_to:
         query = query.lte("date", date_to)
     if account_code:
-        query = query.eq("account_code", account_code)
+        query = query.eq("category", account_code)
     result = query.execute()
-    return {"entries": result.data, "count": len(result.data)}
+
+    # Frontend expects a `reconciled` flag on ledger rows.
+    entries = []
+    for row in result.data:
+        row_copy = dict(row)
+        row_copy["reconciled"] = bool(row_copy.get("matched_invoice_id"))
+        entries.append(row_copy)
+
+    return {"entries": entries, "count": len(entries)}
 
 
 # ── Forecast ──────────────────────────────────────────────────────
@@ -304,7 +312,12 @@ async def get_forecast(
 ):
     """Get latest cash flow forecast (all 3 scenarios)."""
     # Check cache first
-    cached = session_manager.get_cached_forecast(company_id)
+    cached = None
+    try:
+        cached = session_manager.get_cached_forecast(company_id)
+    except Exception as e:
+        logger.warning(f"Redis unavailable, skipping forecast cache lookup: {e}")
+
     if cached:
         return {"forecast": cached, "source": "cache"}
 
@@ -357,9 +370,18 @@ async def get_alerts(
     if severity:
         query = query.eq("severity", severity)
     if not resolved:
-        query = query.is_("resolved_at", "null")
+        query = query.is_("acknowledged_at", "null")
     result = query.execute()
-    return {"alerts": result.data, "count": len(result.data)}
+
+    # Keep backwards compatibility with frontend `type` field.
+    alerts = []
+    for row in result.data:
+        alert = dict(row)
+        if "type" not in alert:
+            alert["type"] = alert.get("alert_type", "anomaly")
+        alerts.append(alert)
+
+    return {"alerts": alerts, "count": len(alerts)}
 
 
 # ── Agent Status ──────────────────────────────────────────────────
