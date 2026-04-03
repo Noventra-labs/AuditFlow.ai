@@ -1,8 +1,18 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { api } from '@/lib/api';
 
-const data = [
+interface ChartDataPoint {
+  month: string;
+  actual: number | null;
+  conservative: number | null;
+  base: number | null;
+  optimistic: number | null;
+}
+
+const defaultData: ChartDataPoint[] = [
   { month: 'Jan', actual: 145000, conservative: null, base: null, optimistic: null },
   { month: 'Feb', actual: 152000, conservative: null, base: null, optimistic: null },
   { month: 'Mar', actual: 168000, conservative: null, base: null, optimistic: null },
@@ -35,6 +45,65 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function CashFlowChart() {
+  const [data, setData] = useState<ChartDataPoint[]>(defaultData);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchForecast = async () => {
+      try {
+        setLoading(true);
+        const response = await api.getForecast();
+        const forecast = response.forecast;
+
+        // Transform forecast data to chart format
+        if (forecast?.scenarios) {
+          const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          const currentMonth = new Date().getMonth(); // 0-11
+
+          // Build chart data from forecast scenarios
+          const chartData: ChartDataPoint[] = months.map((month, index) => {
+            const isPast = index <= currentMonth;
+            const isCurrent = index === currentMonth;
+
+            return {
+              month,
+              actual: isPast ? (forecast.scenarios?.base?.[index] || defaultData[index]?.actual || null) : null,
+              conservative: forecast.scenarios?.conservative?.[index] || defaultData[index]?.conservative || null,
+              base: forecast.scenarios?.base?.[index] || defaultData[index]?.base || null,
+              optimistic: forecast.scenarios?.optimistic?.[index] || defaultData[index]?.optimistic || null,
+            };
+          });
+
+          setData(chartData.slice(0, 12)); // Show up to 12 months
+          setError(null);
+        } else {
+          // Fallback to default if no forecast data
+          setData(defaultData);
+        }
+      } catch (err) {
+        console.error('Failed to fetch forecast:', err);
+        setError('Using cached forecast data');
+        setData(defaultData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchForecast();
+    // Refresh every 60 seconds
+    const interval = setInterval(fetchForecast, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="chart-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <span style={{ color: 'var(--text-muted)' }}>Loading forecast data...</span>
+      </div>
+    );
+  }
+
   return (
     <div className="chart-container">
       <ResponsiveContainer width="100%" height="100%">
@@ -74,6 +143,11 @@ export default function CashFlowChart() {
           />
         </AreaChart>
       </ResponsiveContainer>
+      {error && (
+        <div style={{ position: 'absolute', bottom: 4, right: 8, fontSize: '11px', color: '#fb923c' }}>
+          {error}
+        </div>
+      )}
     </div>
   );
 }
