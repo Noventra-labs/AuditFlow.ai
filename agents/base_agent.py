@@ -3,7 +3,7 @@ import os
 import json
 import time
 import asyncio
-from typing import Optional, Dict, Any, Callable
+from typing import Optional
 from datetime import datetime
 from uuid import uuid4
 
@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from shared.redis_client import RedisSessionManager
 from shared.supabase_client import get_supabase
-from shared.logging_utils import get_logger, log_agent_action
-from shared.models import AgentTask, AgentResult, AuditLogEntry
+from shared.logging_utils import get_logger
+from shared.models import AgentTask, AgentResult
 
 
 class BaseFinanceAgent:
