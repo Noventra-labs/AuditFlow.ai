@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function ReportsView() {
   return (
     <div className="grid grid-cols-12 gap-8">
@@ -5,10 +7,28 @@ export default function ReportsView() {
       <div className="col-span-12 lg:col-span-4 flex flex-col gap-8">
         <section className="bg-surface-container p-6 rounded-xl border-l-2 border-gold/30">
           <div className="flex items-center justify-between mb-8">
-            <h1 className="font-instrument text-3xl italic">Report Wizard</h1>
-            <span className="font-mono text-[10px] text-on-surface-variant bg-surface-container-highest px-2 py-1 rounded">STEP 01/04</span>
+            <h1 className="font-instrument text-3xl italic">Reports Overview</h1>
           </div>
           <div className="space-y-6">
+            <Link to="/reports/generate" className="w-full bg-primary text-on-primary-container font-bold py-4 rounded-lg flex items-center justify-center gap-2 shadow-xl active:scale-[0.98] transition-transform">
+              Report Wizard <span className="material-symbols-outlined text-sm">auto_awesome</span>
+            </Link>
+            <div className="grid grid-cols-2 gap-3">
+              <Link to="/reports/library" className="w-full bg-surface-container-high text-on-surface hover:text-primary py-2 text-xs flex items-center justify-center gap-2 transition-colors rounded">
+                <span className="material-symbols-outlined text-sm">inventory_2</span> Library
+              </Link>
+              <Link to="/reports/drafts" className="w-full bg-surface-container-high text-on-surface hover:text-primary py-2 text-xs flex items-center justify-center gap-2 transition-colors rounded">
+                <span className="material-symbols-outlined text-sm">edit_document</span> Drafts
+              </Link>
+              <Link to="/reports/archive" className="w-full bg-surface-container-high text-on-surface hover:text-primary py-2 text-xs flex items-center justify-center gap-2 transition-colors rounded">
+                <span className="material-symbols-outlined text-sm">archive</span> Archive
+              </Link>
+              <Link to="/reports/scheduled" className="w-full bg-surface-container-high text-on-surface hover:text-primary py-2 text-xs flex items-center justify-center gap-2 transition-colors rounded">
+                <span className="material-symbols-outlined text-sm">schedule</span> Scheduled
+              </Link>
+            </div>
+
+            <div className="hidden">
             <div>
               <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant/40 block mb-3">Select Document Type</label>
               <div className="grid grid-cols-1 gap-3">
@@ -56,6 +76,7 @@ export default function ReportsView() {
             <button className="w-full text-on-surface/60 hover:text-on-surface py-2 text-xs flex items-center justify-center gap-2 transition-colors">
               <span className="material-symbols-outlined text-sm">schedule</span> Schedule Recurring Report
             </button>
+            </div>
           </div>
         </section>
 
@@ -64,9 +85,9 @@ export default function ReportsView() {
           <div className="space-y-3">
             <div className="bg-surface-container-low p-3 rounded-lg border border-outline-variant/10 group cursor-pointer hover:bg-surface-container-highest transition-all relative">
               <div className="absolute -top-2 -right-1 bg-gold text-[8px] font-black px-2 py-0.5 rounded-full text-on-primary-container shadow-md">GOLD</div>
-              <div className="aspect-[3/4] bg-surface-bright rounded mb-3 flex items-center justify-center overflow-hidden">
+              <Link to="/reports/view" className="aspect-[3/4] bg-surface-bright rounded mb-3 flex items-center justify-center overflow-hidden block">
                 <img className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkoYKMxCIB4KE8SZzw46ZiUQYq_KHf2B5QfwpBgil35UjbScHOL5SmYXt3OvO4w9PyzpVpfShcJ4iVWcL1GsyNXg-DXzHCqmoV8VBcWlYkC4YZ_1byly1NqTwHKvKJoUExtUZAhKDYXm4hiZwkieJEsPVOMawHv3mVpbkS37fXnkHRdbvVxLEiOTcGIOp35kytOvnogNTIL6Hc4_QbGkH9uaz7nvRvju8UyKBhyG1MI41ZXX6StsiW_4LFnRzvCsH2pTBtLyVszFLV" alt="Q3 Fiscal Audit" />
-              </div>
+              </Link>
               <p className="text-[11px] font-bold leading-tight line-clamp-1">Q3 Fiscal Audit</p>
               <p className="font-mono text-[9px] text-on-surface-variant mt-1">OCT 24, 2023</p>
             </div>
