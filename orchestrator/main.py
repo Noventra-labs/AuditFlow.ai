@@ -22,7 +22,7 @@ from shared.models import (
     ReportHistory,
 )
 from shared.supabase_client import get_supabase
-from shared.auth import verify_firebase_token, verify_token_optional
+from shared.auth import verify_firebase_token
 from shared.logging_utils import get_logger
 
 from orchestrator.decomposer import decompose_financial_task
@@ -181,7 +181,7 @@ async def health_check():
 async def submit_invoice(
     submission: InvoiceSubmission,
     background_tasks: BackgroundTasks,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Submit invoice for async multi-agent processing."""
     session_id = f"sess_{uuid4().hex[:12]}"
@@ -228,7 +228,7 @@ async def list_invoices(
     company_id: str = Query(...),
     status: Optional[str] = None,
     limit: int = 50,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """List all invoices with status and reconciliation state."""
     query = supabase.table("invoices").select("*").eq("company_id", company_id).order("created_at", desc=True).limit(limit)
@@ -241,7 +241,7 @@ async def list_invoices(
 @app.get("/v1/invoices/{invoice_id}")
 async def get_invoice(
     invoice_id: str,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Get full invoice detail with agent processing log."""
     result = supabase.table("invoices").select("*").eq("id", invoice_id).execute()
@@ -261,7 +261,7 @@ async def trigger_reconciliation(
     date_from: Optional[str] = None,
     date_to: Optional[str] = None,
     background_tasks: BackgroundTasks = None,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Manually trigger reconciliation for a date range."""
     session_id = f"sess_{uuid4().hex[:12]}"
@@ -282,7 +282,7 @@ async def get_ledger(
     date_to: Optional[str] = None,
     account_code: Optional[str] = None,
     limit: int = 100,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Get ledger entries with filtering."""
     query = supabase.table("ledger_entries").select("*").eq("company_id", company_id).order("date", desc=True).limit(limit)
@@ -300,7 +300,7 @@ async def get_ledger(
 @app.get("/v1/forecast")
 async def get_forecast(
     company_id: str = Query(...),
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Get latest cash flow forecast (all 3 scenarios)."""
     # Check cache first
@@ -318,7 +318,7 @@ async def get_forecast(
 @app.get("/v1/tax/summary")
 async def get_tax_summary(
     company_id: str = Query(...),
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Get current period tax liability and filing deadlines."""
     result = supabase.table("tax_records").select("*").eq("company_id", company_id).order("period_end", desc=True).limit(10).execute()
@@ -331,7 +331,7 @@ async def generate_report(
     company_id: str,
     report_type: str = "monthly",
     background_tasks: BackgroundTasks = None,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """Trigger on-demand report generation and email delivery."""
     session_id = f"sess_{uuid4().hex[:12]}"
@@ -350,7 +350,7 @@ async def get_alerts(
     company_id: str = Query(...),
     severity: Optional[str] = None,
     resolved: bool = False,
-    user: dict = Depends(verify_token_optional),
+    user: dict = Depends(verify_firebase_token),
 ):
     """List active alerts with severity and resolution status."""
     query = supabase.table("alerts").select("*").eq("company_id", company_id).order("created_at", desc=True)
@@ -364,7 +364,7 @@ async def get_alerts(
 
 # ── Agent Status ──────────────────────────────────────────────────
 @app.get("/v1/agents/status")
-async def get_agent_status(user: dict = Depends(verify_token_optional)):
+async def get_agent_status(user: dict = Depends(verify_firebase_token)):
     """Health status and last activity of all 6 sub-agents."""
     agents = [
         "invoice_parser_agent", "reconciliation_agent", "tax_compliance_agent",
