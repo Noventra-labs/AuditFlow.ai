@@ -11,8 +11,8 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Next.js 14 Dashboard                     │
-│        (Real-time WebSocket · Recharts · Firebase Auth)     │
+│                 React 18 + Vite Dashboard                   │
+│        (React Router · Recharts · Firebase Auth)           │
 ├─────────────────────────────────────────────────────────────┤
 │                   FastAPI Orchestrator                       │
 │         (Task Decomposition · Routing · Synthesis)          │
@@ -46,8 +46,12 @@ FinancePilot/
 │   ├── report/            # P&L generation + email delivery
 │   └── alert/             # Threshold monitoring + notifications
 ├── shared/                # Models, clients, auth, logging
-├── frontend/              # Next.js 14 dashboard
-│   └── src/components/    # MetricCards, CashFlowChart, AgentActivity, etc.
+├── frontend/              # React 18 + Vite dashboard
+│   └── src/
+│       ├── components/   # Layout (nav shell)
+│       ├── views/       # Dashboard, Invoices, Forecast, etc.
+│       ├── lib/         # api.ts, firebase.ts
+│       └── types/       # TypeScript interfaces
 ├── supabase/migrations/   # Schema (11 tables) + seed data
 ├── infra/                 # Terraform (Cloud Run, Pub/Sub, Redis, IAM)
 └── cloudbuild.yaml        # CI/CD pipeline (7 parallel builds)
@@ -79,6 +83,8 @@ uvicorn orchestrator.main:app --reload --port 8080
 ### Frontend
 ```bash
 cd frontend && npm install && npm run dev
+# Open http://localhost:5173
+# API calls proxy to backend at localhost:8080
 ```
 
 ### Database
