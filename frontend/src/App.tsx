@@ -1,6 +1,4 @@
-'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import DashboardView from './stitch/DashboardView';
 import InvoicesView from './stitch/InvoicesView';
 import ReconciliationView from './stitch/ReconciliationView';
@@ -8,9 +6,11 @@ import TaxComplianceView from './stitch/TaxComplianceView';
 import ForecastView from './stitch/ForecastView';
 import ReportsView from './stitch/ReportsView';
 import AgentConsoleView from './stitch/AgentConsoleView';
+import HelpView from './stitch/HelpView';
 import CommandConsole from '@/components/CommandConsole';
+import './index.css';
 
-export default function DashboardPage() {
+export default function App() {
   const [activeView, setActiveView] = useState('dashboard');
   const [showCommandConsole, setShowCommandConsole] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
@@ -29,6 +29,8 @@ export default function DashboardPage() {
         return <ForecastView setActiveView={setActiveView} />;
       case 'reports':
         return <ReportsView setActiveView={setActiveView} />;
+      case 'help':
+        return <HelpView setActiveView={setActiveView} />;
       case 'agent_console':
         return <AgentConsoleView setActiveView={setActiveView} />;
       default:
@@ -46,32 +48,6 @@ export default function DashboardPage() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{__html: `
-        body {
-            background-color: #10141a;
-            color: #dfe2eb;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        .font-instrument { font-family: 'Instrument Serif', serif; }
-        .font-mono { font-family: 'DM Mono', monospace; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        
-        .pulse-dot {
-          animation: pulse 1.5s infinite ease-in-out;
-        }
-        @keyframes pulse {
-          0% { opacity: 0.4; }
-          50% { opacity: 1; }
-          100% { opacity: 0.4; }
-        }
-      `}} />
       <div className="dark bg-background text-on-background min-h-screen relative">
         {renderView()}
 

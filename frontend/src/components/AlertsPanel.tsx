@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { api, Alert } from '@/lib/api';
+import { api, type Alert } from '@/lib/api';
 
 interface AlertWithDisplay extends Alert {
   icon: string;

@@ -27,7 +27,7 @@ export default function AgentActivity() {
 
   useEffect(() => {
     // Connect to WebSocket for live agent events
-    const wsUrl = process.env.NEXT_PUBLIC_WS_URL;
+    const wsUrl = import.meta.env.VITE_WS_URL;
     if (!wsUrl) return;
 
     try {

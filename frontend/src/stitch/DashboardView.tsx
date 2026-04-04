@@ -19,7 +19,7 @@ export default function DashboardView({ setActiveView }: { setActiveView: (view:
 <button className="text-[#dfe2eb]/40 hover:text-[#62df7d] hover:bg-[#1c2026]/50 transition-all p-2 rounded" onClick={() => setActiveView('agent_console')}><span className="material-symbols-outlined">settings</span></button>
 </div>
 <div className="mt-auto">
-<button className="text-[#dfe2eb]/40 hover:text-[#62df7d] hover:bg-[#1c2026]/50 transition-all p-2 rounded"><span className="material-symbols-outlined">help_outline</span></button>
+<button onClick={() => setActiveView("help")} className="text-[#dfe2eb]/40 hover:text-[#62df7d] hover:bg-[#1c2026]/50 transition-all p-2 rounded"><span className="material-symbols-outlined">help_outline</span></button>
 </div>
 </nav>
 {/* Context Sidebar */}

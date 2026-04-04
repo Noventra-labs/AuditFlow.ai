@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { api, Invoice } from '@/lib/api';
+import { api, type Invoice } from '@/lib/api';
 
 interface InvoiceWithDisplay extends Invoice {
   displayAmount: string;
