@@ -1,12 +1,12 @@
 import pytest
 from fastapi.testclient import TestClient
-from orchestrator.main import app
 import sys
 
-# Mock supabase to avoid import errors
+# Mock supabase to avoid import errors during app import
 from unittest import mock
 sys.modules['supabase'] = mock.MagicMock()
 
+from orchestrator.main import app
 client = TestClient(app)
 
 def test_protected_routes_require_auth():
