@@ -128,7 +128,7 @@ export const api = {
 
   // Ledger
   getLedger: (dateFrom?: string, dateTo?: string) =>
-    fetchApi<{ entries: any[]; count: number }>(buildUrl('/v1/ledger', dateFrom ? { date_from: dateFrom, date_to: dateTo } : undefined)),
+    fetchApi<{ entries: any[]; count: number }>(buildUrl('/v1/ledger', dateFrom ? { date_from: dateFrom, ...(dateTo ? { date_to: dateTo } : {}) } : undefined)),
 
   // Agent Status
   getAgentStatus: () =>
@@ -137,7 +137,7 @@ export const api = {
   // Trigger reconciliation
   triggerReconciliation: (dateFrom?: string, dateTo?: string) =>
     fetchApi<{ session_id: string; status: string }>(
-      buildUrl('/v1/reconcile', dateFrom ? { date_from: dateFrom, date_to: dateTo } : undefined),
+      buildUrl('/v1/reconcile', dateFrom ? { date_from: dateFrom, ...(dateTo ? { date_to: dateTo } : {}) } : undefined),
       { method: 'POST' }
     ),
 
