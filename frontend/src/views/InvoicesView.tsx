@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function InvoicesView() {
   return (
     <div className="space-y-8 pb-20">
@@ -8,12 +10,12 @@ export default function InvoicesView() {
           <p className="text-on-surface-variant text-sm mt-1">Manage and audit institutional payables</p>
         </div>
         <div className="flex gap-3">
-          <button className="bg-surface-container hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">add</span> Add Manually
-          </button>
-          <button className="bg-surface-container hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
-            <span className="material-symbols-outlined text-lg">ios_share</span> Export CSV
-          </button>
+          <Link to="/invoices/vendors" className="bg-surface-container hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg">factory</span> Vendors
+          </Link>
+          <Link to="/invoices/batches" className="bg-surface-container hover:bg-surface-container-high text-on-surface px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+            <span className="material-symbols-outlined text-lg">grid_view</span> Batch Processing
+          </Link>
           <button className="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg text-sm font-bold transition-all hover:opacity-90 shadow-lg shadow-primary/10 flex items-center gap-2">
             <span className="material-symbols-outlined text-lg">upload</span> Upload Invoice
           </button>

@@ -1,35 +1,62 @@
 @import "tailwindcss";
 
 @theme {
-  --color-inverse-surface: #dfe2eb;
-  --color-surface-dim: #10141a;
-  --color-on-primary-container: #003111;
-  --color-outline: #879485;
-  --color-background: #10141a;
+  --color-on-error: #690005;
+  --color-secondary-container: #23502c;
   --color-surface-container-lowest: #0a0e14;
-  --color-surface-container-high: #262a31;
   --color-on-secondary: #093817;
-  --color-surface-bright: #353940;
-  --color-on-primary: #003914;
+  --color-primary-fixed: #7ffc97;
+  --color-surface-tint: #62df7d;
+  --color-primary-fixed-dim: #62df7d;
+  --color-surface-container-low: #181c22;
+  --color-on-tertiary-container: #5a0022;
+  --color-on-secondary-fixed-variant: #23502c;
   --color-outline-variant: #3e4a3d;
   --color-primary: #62df7d;
-  --color-surface-container: #1c2026;
-  --color-secondary-container: #23502c;
-  --color-on-background: #dfe2eb;
-  --color-inverse-on-surface: #2d3137;
+  --color-error: #ffb4ab;
   --color-primary-container: #1ca64d;
-  --color-on-surface: #dfe2eb;
+  --color-on-primary: #003914;
+  --color-tertiary-container: #ec6284;
+  --color-background: #10141a;
+  --color-surface-variant: #31353c;
   --color-on-surface-variant: #bdcaba;
-  --color-surface-container-low: #181c22;
-  --color-on-secondary-container: #90c193;
+  --color-on-primary-fixed: #002109;
+  --color-secondary: #a1d3a4;
+  --color-on-primary-fixed-variant: #005320;
+  --color-on-tertiary-fixed: #3f0016;
+  --color-error-container: #93000a;
+  --color-on-background: #dfe2eb;
+  --color-surface-bright: #353940;
+  --color-surface: #10141a;
+  --color-inverse-primary: #006e2d;
+  --color-tertiary-fixed: #ffd9de;
+  --color-on-secondary-fixed: #002109;
+  --color-on-error-container: #ffdad6;
+  --color-tertiary: #ffb2bf;
   --color-surface-container-highest: #31353c;
-  --color-error: #f2b8ab;
-  --color-error-container: #8c1d0f;
-  --color-tertiary: #a8c7fa;
-  --color-tertiary-container: #004062;
-  --color-on-tertiary-container: #d6e3ff;
-  --color-gold: #c9a227;
+  --color-tertiary-fixed-dim: #ffb2bf;
+  --color-on-surface: #dfe2eb;
+  --color-inverse-on-surface: #2d3137;
+  --color-on-tertiary-fixed-variant: #8a143c;
+  --color-secondary-fixed: #bdefbe;
+  --color-on-secondary-container: #90c193;
+  --color-outline: #879485;
+  --color-surface-dim: #10141a;
+  --color-inverse-surface: #dfe2eb;
+  --color-surface-container-high: #262a31;
+  --color-on-tertiary: #660027;
+  --color-surface-container: #1c2026;
+  --color-secondary-fixed-dim: #a1d3a4;
   --color-on-primary-container: #003111;
+  --color-gold-accent: #d4af37;
+  --color-gold: #c9a227;
+  --color-archive-gold: #C5A059;
+
+  --font-headline: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+  --font-label: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-serif: "Instrument Serif", serif;
 }
 
 body {
@@ -72,4 +99,40 @@ body {
   50% {
     opacity: 0.4;
   }
+}
+
+.pulse-accent {
+  animation: accent-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes accent-pulse {
+  0%, 100% { border-color: rgba(98, 223, 125, 0.3); }
+  50% { border-color: rgba(98, 223, 125, 0.8); }
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #10141a; }
+::-webkit-scrollbar-thumb { background: #31353c; border-radius: 10px; }
+
+.glass-panel {
+  background: rgba(28, 32, 38, 0.7);
+  backdrop-filter: blur(20px);
+}
+
+.grid-overlay {
+  background-image:
+      linear-gradient(to right, rgba(98, 223, 125, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(98, 223, 125, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.sparkline-gradient {
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #0a0e14; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #31353c; }
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba(98, 223, 125, 0.1);
 }
