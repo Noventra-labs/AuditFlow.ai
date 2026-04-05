@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export default function DocumentViewerView() {
   return (
     <div className="flex-1 overflow-y-auto no-scrollbar p-12 bg-surface-container-lowest flex flex-col items-center">
