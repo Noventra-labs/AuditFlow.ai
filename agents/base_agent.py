@@ -14,6 +14,7 @@ from google.cloud import pubsub_v1
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from shared.vertex_client import get_vertex_client
 from shared.redis_client import RedisSessionManager
 from shared.supabase_client import get_supabase
 from shared.logging_utils import get_logger, log_agent_action
@@ -38,8 +39,8 @@ class BaseFinanceAgent:
 
     def __init__(self):
         self.logger = get_logger(self.AGENT_NAME)
-        # Initialize Gemini API with key from environment
-        self.claude = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+        # Initialize Vertex AI client using Application Default Credentials
+        self.claude = get_vertex_client()
         self.redis = RedisSessionManager()
         self.supabase = get_supabase()
 
@@ -52,14 +53,20 @@ class BaseFinanceAgent:
         self,
         user_message: str,
         system_prompt: Optional[str] = None,
-        model: str = "gemini-2.5-pro",
+        model: Optional[str] = None,
         max_tokens: int = 4096,
         temperature: float = 0.2,
     ) -> tuple[str, int]:
-        """Call Gemini API (kept method name for compatibility) and return (response_text, tokens_used)."""
+        """Call Vertex AI Gemini and return (response_text, tokens_used).
+
+        The model is determined by VERTEX_MODEL env var (default: gemini-2.5-pro)
+        but can be overridden per-call via the `model` argument.
+        """
+        # Resolve model: use per-call override, falls back to VERTEX_MODEL env var
+        resolved_model = model or os.environ.get("VERTEX_MODEL", "gemini-2.5-pro")
         start = time.time()
         response = self.claude.models.generate_content(
-            model=model,
+            model=resolved_model,
             contents=user_message,
             config=types.GenerateContentConfig(
                 system_instruction=system_prompt or self.SYSTEM_PROMPT,
@@ -71,11 +78,11 @@ class BaseFinanceAgent:
         tokens = 0
         if response.usage_metadata:
             tokens = response.usage_metadata.prompt_token_count + response.usage_metadata.candidates_token_count
-            
+
         elapsed_ms = int((time.time() - start) * 1000)
         self.logger.info(
-            f"LLM call completed in {elapsed_ms}ms, {tokens} tokens",
-            extra={"duration_ms": elapsed_ms, "tokens_used": tokens},
+            f"Vertex AI call completed in {elapsed_ms}ms, {tokens} tokens",
+            extra={"duration_ms": elapsed_ms, "tokens_used": tokens, "model": resolved_model},
         )
         return text, tokens
 

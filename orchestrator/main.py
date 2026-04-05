@@ -16,6 +16,7 @@ from contextlib import asynccontextmanager
 import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from shared.vertex_client import get_vertex_client
 from shared.models import (
     InvoiceSubmission, Invoice, InvoiceStatus, AgentTask, AgentResult,
     FinancialPlan, WSEvent, Forecast, TaxRecord, Alert, LedgerEntry,
@@ -86,7 +87,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-claude_client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+claude_client = get_vertex_client()
 supabase = get_supabase()
 
 
