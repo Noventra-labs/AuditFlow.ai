@@ -35,3 +35,9 @@ Thumbs.db
 
 # Docker
 *.log
+
+
+#build-file
+CONTEXT.md
+FinancePilot_Architecture_Guide.docx
+_arch_guide_content.txt
