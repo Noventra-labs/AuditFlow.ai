@@ -12,9 +12,9 @@
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                 React 18 + Vite Dashboard                   │
-│        (React Router · Recharts · Firebase Auth)           │
+│        (React Router · Recharts · Firebase Auth)            │
 ├─────────────────────────────────────────────────────────────┤
-│                   FastAPI Orchestrator                       │
+│                   FastAPI Orchestrator                      │
 │         (Task Decomposition · Routing · Synthesis)          │
 ├──────────┬──────────┬──────────┬──────────┬────────┬────────┤
 │ Invoice  │  Recon   │   Tax    │ Forecast │ Report │ Alert  │
@@ -22,9 +22,9 @@
 ├──────────┴──────────┴──────────┴──────────┴────────┴────────┤
 │              Google Cloud Pub/Sub (Event Bus)               │
 ├─────────────────────────────────────────────────────────────┤
-│   Supabase (PostgreSQL + RLS)  │  Redis (Memorystore)      │
+│   Supabase (PostgreSQL + RLS)  │  Redis (Memorystore)       │
 ├─────────────────────────────────────────────────────────────┤
-│   Gmail MCP  │  Calendar MCP  │  Supabase MCP  │  Web MCP  │
+│   Gmail MCP  │  Calendar MCP  │  Supabase MCP  │  Web MCP   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
